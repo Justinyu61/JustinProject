@@ -33,7 +33,7 @@ export default {
       this.$http.post(logoutApi, this.user)
         .then((res) => {
           if (res.data.success) {
-            console.log(res)
+            // console.log(res)
             this.$router.push('/login')
           }
         })

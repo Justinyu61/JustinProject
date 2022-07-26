@@ -148,7 +148,10 @@
           <button type="button" class="btn btn-outline-secondary"
                   data-bs-dismiss="modal">取消
           </button>
-          <button type="button" class="btn btn-primary" @click="$emit('upDate-product',tempProduct)">確認</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="$emit('update-product',tempProduct)">確認</button>
         </div>
       </div>
     </div>
@@ -160,7 +163,8 @@ import Modal from 'bootstrap/js/dist/modal'
 
 export default {
   name: 'ProductModal',
-  // 用props把外層資料傳給內層,再用$emit事件往外送(前內後外
+  // 單向數據流,不可以直接修改外層資料
+  // 用props把外層資料傳給內層,再用$emit事件往外送(前內後外)
   props: {
     product: {
       type: Object,

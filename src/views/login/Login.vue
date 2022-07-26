@@ -53,12 +53,17 @@ export default {
       // console.log(loginApi)
       this.$http.post(loginApi, this.user)
         .then((res) => {
+          console.log(res)
           if (res.data.success) {
             const { token, expired } = res.data
+            console.log(token, expired)
             document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
-            // console.log(res)
+            console.log('登入成功')
             this.$router.push('/dashboard/products')
           }
+        })
+        .catch((err) => {
+          console.log(err)
         })
     }
   }

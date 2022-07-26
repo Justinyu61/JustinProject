@@ -18,7 +18,7 @@
     <tbody>
       <tr v-for="item in products" :key="item.id">
         <td>{{ item.category }}</td>
-        <td>{{ otem.title }}</td>
+        <td>{{ item.title }}</td>
         <td class="text-right">
           {{ item.origin_price }}
         </td>
@@ -38,7 +38,7 @@
       </tr>
     </tbody>
   </table>
-  <ProductModal ref="productModal" :product="tempProduct" @upDate-product="upDateProduct"></ProductModal>
+  <ProductModal ref="productModal" :product="tempProduct" @update-product="updateProduct"></ProductModal>
 </template>
 
 <script>
@@ -73,17 +73,18 @@ export default {
       const productComponent = this.$refs.productModal
       productComponent.showModal()
     },
-    upDateProduct (item) {
-      // this.tempProduct = item
-      // const updateProductsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
-      // const productComponent = this.$refs.productModal
-      // this.$http.post(updateProductsApi, { data: this.tempProduct })
-      //   .then((res) => {
-      //     console.log(res)
-      //     productComponent.hideModal()
-      //     this.getProducts()
-      //   })
-      console.log(item)
+    updateProduct (item) {
+      this.tempProduct = item
+      const updateProductsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
+      console.log(updateProductsApi)
+      const productComponent = this.$refs.productModal
+      this.$http.post(updateProductsApi, { data: this.tempProduct })
+        .then((res) => {
+          console.log(res)
+          productComponent.hideModal()
+          this.getProducts()
+        })
+      // console.log(item)
     }
   },
   created () {
