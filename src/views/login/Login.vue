@@ -13,7 +13,7 @@
             placeholder="Email address"
             required
             autofocus
-            v-model="user.username"
+            v-model="username"
           />
         </div>
         <div class="mb-2">
@@ -24,7 +24,7 @@
             class="form-control"
             placeholder="Password"
             required
-            v-model="user.password"
+            v-model="password"
           />
         </div>
 
@@ -37,34 +37,70 @@
 </template>
 
 <script>
+import { reactive, toRefs } from 'vue'
+import { useRouter } from 'vue-router'
+import { post } from '@/utils/request'
+
+const useLoginEffect = () => {
+  const router = useRouter()
+  const data = reactive({ username: '', password: '' })
+
+  const signIn = async () => {
+    try {
+      const result = await post('admin/signin', {
+        username: data.username,
+        password: data.password
+      })
+      if (result?.data?.success) {
+        const { token, expired } = result.data
+        document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
+        console.log('登入成功')
+        await router.push('/dashboard/products')
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  const { username, password } = toRefs(data)
+  return { username, password, signIn }
+}
+
 export default {
   name: 'Login-view',
-  data () {
+  // data () {
+  //   return {
+  //     user: {
+  //       username: '',
+  //       password: ''
+  //     }
+  //   }
+  // },
+  // methods: {
+  //   signIn () {
+  //     const loginApi = `${process.env.VUE_APP_API}admin/signin`
+  //     // console.log(loginApi)
+  //     this.$http.post(loginApi, this.user)
+  //       .then((res) => {
+  //         console.log(res)
+  //         if (res.data.success) {
+  //           const { token, expired } = res.data
+  //           console.log(token, expired)
+  //           document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
+  //           console.log('登入成功')
+  //           this.$router.push('/dashboard/products')
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //   }
+  // }
+  setup () {
+    const { username, password, signIn } = useLoginEffect()
     return {
-      user: {
-        username: '',
-        password: ''
-      }
-    }
-  },
-  methods: {
-    signIn () {
-      const loginApi = `${process.env.VUE_APP_API}admin/signin`
-      // console.log(loginApi)
-      this.$http.post(loginApi, this.user)
-        .then((res) => {
-          console.log(res)
-          if (res.data.success) {
-            const { token, expired } = res.data
-            console.log(token, expired)
-            document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
-            console.log('登入成功')
-            this.$router.push('/dashboard/products')
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      username,
+      password,
+      signIn
     }
   }
 }
