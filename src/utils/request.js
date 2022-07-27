@@ -8,7 +8,7 @@ const instance = axios.create({
 export const get = (url, params = {}) => {
   return new Promise((resolve, reject) => {
     instance.post(url, { params }).then((res) => {
-      resolve(res)
+      resolve(res.data)
     }, err => {
       reject(err)
     })
