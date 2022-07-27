@@ -32,6 +32,8 @@
                   type="file"
                   id="customFile"
                   class="form-control"
+                  ref="fileInput"
+                  @change="uploadFile"
                 >
               </div>
               <img class="img-fluid" alt="">
@@ -159,7 +161,7 @@
 </template>
 
 <script>
-import Modal from 'bootstrap/js/dist/modal'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'ProductModal',
@@ -186,16 +188,23 @@ export default {
     }
   },
   methods: {
-    showModal () {
-      this.modal.show()
-    },
-    hideModal () {
-      this.modal.hide()
+    uploadFile () {
+      const uploadFile = this.$refs.fileInput.files[0]
+      // console.dir(uploadFile)
+      const formData = new FormData()
+      formData.append('file-to-upload', uploadFile)
+      const fileUploadUrl = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`
+      console.log(fileUploadUrl)
+      this.$http.post(fileUploadUrl, formData)
+        .then((res) => {
+          console.log(res.data)
+          if (res.data.success) {
+            this.tempProduct.imageUrl = res.data.imageUrl
+          }
+        })
     }
   },
-  mounted () {
-    this.modal = new Modal(this.$refs.modal)
-  }
+  mixins: [modalMixin]
 }
 </script>
 
