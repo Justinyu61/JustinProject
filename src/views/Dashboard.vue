@@ -1,17 +1,21 @@
 <template>
 <Navbar></Navbar>
-  <div class="container-fluid">
+  <div class="container-fluid mt-3 position-relative">
+    <ToastMessages></ToastMessages>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/Navbar.vue'
+import emitter from '@/methods/getEmitter'
+import ToastMessages from '@/components/ToastMessages.vue'
 
 export default {
   name: 'Dashboard-view',
   components: {
-    Navbar
+    Navbar,
+    ToastMessages
   },
   created () {
     this.$http.defaults.headers.common.Authorization = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
@@ -24,6 +28,11 @@ export default {
           this.$router.push('/login')
         }
       })
+  },
+  provide () {
+    return {
+      emitter
+    }
   }
 }
 </script>
