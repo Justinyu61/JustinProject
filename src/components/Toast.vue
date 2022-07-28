@@ -15,7 +15,8 @@
 import Toast from 'bootstrap/js/dist/toast'
 
 export default {
-  name: 'Toast-view',
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Toast',
   props: ['msg'],
   mounted () {
     const toastEl = this.$refs.toast
