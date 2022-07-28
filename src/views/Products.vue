@@ -21,13 +21,13 @@
         <td>{{ item.category }}</td>
         <td>{{ item.title }}</td>
         <td class="text-right">
-          {{ item.origin_price }}
+          {{ $filters.currency(item.origin_price) }}
         </td>
         <td class="text-right">
-          {{ item.price }}
+          {{ $filters.currency(item.price) }}
         </td>
         <td>
-          <span class="text-success" v-if="item.is_enabled">啟用</span>
+          <span class="text-success" v-if=" item.is_enabled ">啟用</span>
           <span class="text-muted" v-else>未啟用</span>
         </td>
         <td>
@@ -82,7 +82,7 @@ export default {
         })
     },
     openModal (isNew, item) {
-      // console.log(isNew, item) // 確認點擊以及有無帶入產品
+      console.log(isNew, item) // 確認點擊以及有無帶入產品
       if (isNew) { // 假設是新的產品 (isNew為true狀態)
         this.tempProduct = {} // 會帶入空的物件
       } else { // 如果isNew = false的狀態
@@ -95,6 +95,7 @@ export default {
     },
     updateProduct (item) {
       this.tempProduct = item
+      console.log(this.tempProduct)
       // 新增
       let updateProductsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
       // console.log(updateProductsApi)
@@ -111,19 +112,8 @@ export default {
         .then((res) => {
           // console.log(res)
           productComponent.hideModal()
-          if (res.data.success) {
-            this.getProducts()
-            this.emitter.emit('push-message', {
-              style: 'success',
-              title: '更新成功'
-            })
-          } else {
-            this.emitter.emit('push-message', {
-              style: 'danger',
-              title: '更新失敗',
-              content: res.data.message.join('、') // 透過join把陣列內容取出
-            })
-          }
+          this.getProducts()
+          this.$httpMsgState(res, '更新產品')
         })
       // console.log(item)
       this.isLoading = false
