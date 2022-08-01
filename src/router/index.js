@@ -1,7 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from '../views/login/Login'
-import Dashboard from '../views/Dashboard'
-import Products from '../views/Products.vue'
+import Dashboard from '../views/dashboard-backUser/Dashboard.vue'
+import Products from '../views/dashboard-backUser/ProductControler/Products.vue'
+import Orders from '../views/dashboard-backUser/orderConfirmation/Orders.vue'
+import Discount from '../views/dashboard-backUser/discountPage/Discount.vue'
+import Userboard from '../views/dashboard-frontUser/Userboard.vue'
+import UserCart from '../views/dashboard-frontUser/cartPage/UserCart.vue'
 
 const routes = [
   {
@@ -16,6 +20,24 @@ const routes = [
       {
         path: 'products',
         component: Products
+      },
+      {
+        path: 'orders',
+        component: Orders
+      },
+      {
+        path: 'discount',
+        component: Discount
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Userboard,
+    children: [
+      {
+        path: 'cart',
+        component: UserCart
       }
     ]
   }

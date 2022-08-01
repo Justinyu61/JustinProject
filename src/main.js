@@ -7,12 +7,12 @@ import router from './router'
 import Loading from 'vue3-loading-overlay'
 // Import stylesheet
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
-import { currency } from './methods/filters'
+import { currency, date } from './methods/filters'
 import $httpMessageState from './methods/pushMessageState'
 
 const app = createApp(App)
 
-app.config.globalProperties.$filters = { currency }
+app.config.globalProperties.$filters = { currency, date }
 app.config.globalProperties.$httpMsgState = $httpMessageState
 // eslint-disable-next-line vue/multi-word-component-names
 app.component('Loading', Loading)
