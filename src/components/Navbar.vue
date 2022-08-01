@@ -1,24 +1,17 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">這裡是LOGO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
-        </li>
-      </ul>
+      <div class="navbar-nav">
+<!--        <router-link to="/home" class="nav-link">首頁</router-link>-->
+        <router-link to="/dashboard/products" class="nav-link">商品</router-link>
+        <router-link to="/dashboard/orders" class="nav-link">訂單</router-link>
+        <router-link to="/dashboard/discount" class="nav-link">優惠券</router-link>
+          <a class="nav-link" href="#" @click.prevent="logout">登出</a>
+      </div>
     </div>
   </nav>
 </template>
