@@ -1,7 +1,7 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="text-end">
-    <button class="btn btn-primary" type="button" @click="openModal(true)">
+    <button class="btn btn-primary" type="button" @click="openProductModal(true)">
       新增產品
     </button>
   </div>
@@ -32,7 +32,7 @@
         </td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">編輯</button>
+            <button class="btn btn-outline-primary btn-sm" @click="openProductModal(false, item)">編輯</button>
             <button class="btn btn-outline-danger btn-sm" @click="deleteProductModal(item)">刪除</button>
           </div>
         </td>
@@ -81,7 +81,7 @@ export default {
           }
         })
     },
-    openModal (isNew, item) {
+    openProductModal (isNew, item) {
       console.log(isNew, item) // 確認點擊以及有無帶入產品
       if (isNew) { // 假設是新的產品 (isNew為true狀態)
         this.tempProduct = {} // 會帶入空的物件
@@ -127,7 +127,7 @@ export default {
       const deleteProductApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
       this.$http.delete(deleteProductApi)
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           const deleteComponent = this.$refs.deleteModal
           deleteComponent.hideModal()
           this.getProducts()
