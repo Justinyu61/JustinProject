@@ -1,15 +1,13 @@
 <template>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-       ref="modal">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
           <h5 class="modal-title" id="exampleModalLabel">
-            <span>新增產品</span>
+            <span>{{ tempProduct.title ? '編輯產品' : '新增產品' }}</span>
           </h5>
-          <button type="button" class="btn-close"
-                  data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -36,18 +34,19 @@
                   @change="uploadFile"
                 >
               </div>
-              <img class="img-fluid" alt="">
+              <img class="img-fluid" alt="" :src="tempProduct.imageUrl">
               <!-- 延伸技巧，多圖 -->
-              <div class="mt-5">
-                <div class="mb-3 input-group">
-                  <input type="url" class="form-control form-control"
-                         placeholder="請輸入連結">
-                  <button type="button" class="btn btn-outline-danger">
-                    移除
+              <div class="mt-5" v-if="tempProduct.images">
+                <div class="mb-3 input-group" v-for="(image, key) in tempProduct.images" :key="key">
+<!--                  <label class="form-label">多圖上傳區</label>-->
+                  <input type="url" class="form-control form-control" placeholder="請輸入連結" v-model="tempProduct.images[key]">
+                  <button type="button" class="btn btn-close mt-2" @click="tempProduct.images.splice(key, 1)">
+
                   </button>
                 </div>
-                <div>
-                  <button class="btn btn-outline-primary btn-sm d-block w-100">
+                <div v-if="tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length">
+                  <button class="btn btn-outline-primary btn-sm d-block w-100"
+                          @click="tempProduct.images.push('')">
                     新增圖片
                   </button>
                 </div>
@@ -176,6 +175,10 @@ export default {
   watch: {
     product () {
       this.tempProduct = this.product
+      // 多圖
+      if (!this.tempProduct.images) {
+        this.tempProduct.images = []
+      }
     }
   },
   data () {
@@ -191,13 +194,20 @@ export default {
       const formData = new FormData()
       formData.append('file-to-upload', uploadFile)
       const fileUploadUrl = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`
+      const urlUploadPlace = this.$refs.fileInput.id
       // console.log(fileUploadUrl)
       this.$http.post(fileUploadUrl, formData)
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           if (res.data.success) {
             this.tempProduct.imageUrl = res.data.imageUrl
+            document.getElementById(urlUploadPlace).value = ''
+          } else if (!res.data.success) {
+            this.$httpMsgState(res, '圖片上傳')
           }
+        })
+        .catch((err) => {
+          console.log(err)
         })
     }
   },
