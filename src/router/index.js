@@ -6,6 +6,7 @@ import Orders from '../views/dashboard-backUser/orderConfirmation/Orders.vue'
 import Discount from '../views/dashboard-backUser/discountPage/Discount.vue'
 import Userboard from '../views/dashboard-frontUser/Userboard.vue'
 import UserCart from '../views/dashboard-frontUser/cartPage/UserCart.vue'
+import UserProduct from '@/views/dashboard-frontUser/productPage/UserProduct'
 
 const routes = [
   {
@@ -38,6 +39,10 @@ const routes = [
       {
         path: 'cart',
         component: UserCart
+      },
+      {
+        path: 'product/:productId',
+        component: UserProduct
       }
     ]
   }
