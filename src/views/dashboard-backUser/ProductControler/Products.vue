@@ -8,18 +8,20 @@
   <table class="table mt-4">
     <thead>
       <tr>
-        <th width="120">分類</th>
-        <th>產品名稱</th>
-        <th width="120">原價</th>
-        <th width="120">售價</th>
+        <th width="100">分類</th>
+        <th width="200">產品名稱</th>
+        <th width="120">圖片</th>
+        <th width="100">原價</th>
+        <th width="100">售價</th>
         <th width="100">是否啟用</th>
-        <th width="200">編輯</th>
+        <th width="80">編輯</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="item in products" :key="item.id">
         <td>{{ item.category }}</td>
         <td>{{ item.title }}</td>
+        <td><img class="img-fluid" style="max-width: 60%;" :src="item.imageUrl" alt=""></td>
         <td class="text-right">
           {{ $filters.currency(item.origin_price) }}
         </td>
@@ -82,7 +84,7 @@ export default {
         })
     },
     openProductModal (isNew, item) {
-      console.log(isNew, item) // 確認點擊以及有無帶入產品
+      // console.log(isNew, item) // 確認點擊以及有無帶入產品
       if (isNew) { // 假設是新的產品 (isNew為true狀態)
         this.tempProduct = {} // 會帶入空的物件
       } else { // 如果isNew = false的狀態
@@ -95,7 +97,7 @@ export default {
     },
     updateProduct (item) {
       this.tempProduct = item
-      console.log(this.tempProduct)
+      // console.log(this.tempProduct)
       // 新增
       let updateProductsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
       // console.log(updateProductsApi)
