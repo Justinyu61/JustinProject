@@ -36,12 +36,14 @@
     </table>
     <CouponModal :coupon="tempDiscount" ref="couponModal" @update-coupon="updateCoupon"></CouponModal>
     <DeleteModal :item="tempDiscount" ref="deleteModal" @delete-item="deleteCoupon"></DeleteModal>
+    <Pagination :pages="pagination" @emit-pages="getCoupons"></Pagination>
   </div>
 </template>
 
 <script>
 import CouponModal from '@/components/CouponModal.vue'
 import DeleteModal from '@/components/DeleteModal.vue'
+import Pagination from '@/components/Pagination.vue'
 
 export default {
   name: 'Discount-view',
@@ -55,12 +57,14 @@ export default {
         code: ''
       },
       isNew: false,
-      isLoading: false
+      isLoading: false,
+      pagination: {}
     }
   },
   components: {
     CouponModal,
-    DeleteModal
+    DeleteModal,
+    Pagination
   },
   methods: {
     openCouponModel (isNew, item) {
@@ -76,13 +80,14 @@ export default {
       this.$refs.couponModal.showModal()
       this.isLoading = false
     },
-    getCoupons () {
+    getCoupons (page = 1) {
       this.isLoading = true
-      const CouponsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons`
+      const CouponsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`
       this.$http.get(CouponsApi, this.tempDiscount)
         .then((res) => {
           // console.log(res)
           this.coupons = res.data.coupons
+          this.pagination = res.data.pagination
           this.isLoading = false
         })
     },
