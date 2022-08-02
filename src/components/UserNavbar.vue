@@ -7,9 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
 <!--        <router-link to="/home" class="nav-link">首頁</router-link>-->
-        <router-link to="/user/products" class="nav-link">商品</router-link>
+<!--        <router-link to="/user/products" class="nav-link">商品</router-link>-->
         <router-link to="/user/cart" class="nav-link">購物車</router-link>
-        <router-link to="/user/aboutUs" class="nav-link">關於我們</router-link>
+<!--        <router-link to="/user/aboutUs" class="nav-link">關於我們</router-link>-->
           <a class="nav-link" href="#" @click.prevent="logout">登出</a>
       </div>
     </div>
