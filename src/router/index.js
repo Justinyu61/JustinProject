@@ -1,14 +1,21 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Login from '../views/login/Login'
-import Dashboard from '../views/dashboard-backUser/Dashboard.vue'
-import Products from '../views/dashboard-backUser/ProductControler/Products.vue'
-import Orders from '../views/dashboard-backUser/orderConfirmation/Orders.vue'
-import Discount from '../views/dashboard-backUser/discountPage/Discount.vue'
-import Userboard from '../views/dashboard-frontUser/Userboard.vue'
-import UserCart from '../views/dashboard-frontUser/cartPage/UserCart.vue'
-import UserProduct from '@/views/dashboard-frontUser/productPage/UserProduct'
+import Home from '@/views/home/Home'
+import Login from '@/views/login/Login'
+import Dashboard from '@/views/dashboard-backUser/Dashboard.vue'
+import Products from '@/views/dashboard-backUser/ProductControler/Products.vue'
+import Orders from '@/views/dashboard-backUser/orderConfirmation/Orders.vue'
+import Discount from '@/views/dashboard-backUser/discountPage/Discount.vue'
+import ProductBoard from '@/views/dashboard-frontUser/productPage/ProductBoard'
+import ProductIndex from '@/views/dashboard-frontUser/productPage/ProductIndex'
+import ProductItem from '@/views/dashboard-frontUser/productPage/ProductItem'
+import UserCart from '@/views/dashboard-frontUser/cartPage/UserCart.vue'
 
 const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Home
+  },
   {
     path: '/login',
     name: 'Login',
@@ -33,18 +40,22 @@ const routes = [
     ]
   },
   {
-    path: '/user',
-    component: Userboard,
+    path: '/products',
+    component: ProductBoard,
     children: [
       {
-        path: 'cart',
-        component: UserCart
+        path: 'productsIndex',
+        component: ProductIndex
       },
       {
         path: 'product/:productId',
-        component: UserProduct
+        component: ProductItem
       }
     ]
+  },
+  {
+    path: '/cart',
+    component: UserCart
   }
 ]
 

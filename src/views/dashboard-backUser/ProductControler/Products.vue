@@ -1,4 +1,5 @@
 <template>
+
   <Loading :active="isLoading"></Loading>
   <div class="text-end">
     <button class="btn btn-primary" type="button" @click="openProductModal(true)">
@@ -11,8 +12,10 @@
         <th width="100">分類</th>
         <th width="200">產品名稱</th>
         <th width="120">圖片</th>
+        <th width="100">品牌</th>
         <th width="100">原價</th>
         <th width="100">售價</th>
+        <th width="100">件數</th>
         <th width="100">是否啟用</th>
         <th width="80">編輯</th>
       </tr>
@@ -22,12 +25,14 @@
         <td>{{ item.category }}</td>
         <td>{{ item.title }}</td>
         <td><img class="img-fluid" style="max-width: 60%;" :src="item.imageUrl" alt=""></td>
+        <td>{{ item.content}}</td>
         <td class="text-right">
           {{ $filters.currency(item.origin_price) }}
         </td>
         <td class="text-right">
           {{ $filters.currency(item.price) }}
         </td>
+        <td>{{ item.unit }}</td>
         <td>
           <span class="text-success" v-if=" item.is_enabled ">啟用</span>
           <span class="text-muted" v-else>未啟用</span>
