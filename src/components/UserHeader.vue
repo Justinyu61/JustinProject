@@ -1,14 +1,15 @@
 <template>
+  <img src="" alt="" >
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">這裡是LOGO</a>
+    <a class="navbar-brand" href="/">這裡是LOGO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
-<!--        <router-link to="/home" class="nav-link">首頁</router-link>-->
-<!--        <router-link to="/user/products" class="nav-link">商品</router-link>-->
-        <router-link to="/user/cart" class="nav-link">購物車</router-link>
+        <router-link to="/" class="nav-link">首頁</router-link>
+        <router-link to="/products/productsIndex" class="nav-link">商品</router-link>
+        <router-link to="/cart" class="nav-link">購物車</router-link>
 <!--        <router-link to="/user/aboutUs" class="nav-link">關於我們</router-link>-->
           <a class="nav-link" href="#" @click.prevent="logout">登出</a>
       </div>
