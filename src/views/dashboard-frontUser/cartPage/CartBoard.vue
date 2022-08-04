@@ -9,7 +9,7 @@
 <script>
 import UserHeader from '@/components/UserHeader'
 import emitter from '@/methods/getEmitter'
-import ToastMessages from '@/components/ToastMessages.vue'
+import ToastMessages from '@/components/toastMessageController/ToastMessages.vue'
 
 export default {
   name: 'UserCart',

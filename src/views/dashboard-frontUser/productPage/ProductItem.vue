@@ -69,7 +69,7 @@ export default {
           console.log(res)
           this.$httpMsgState(res, '加入購物車')
           this.isLoading = false
-          this.$router.push('/cart/cartPage')
+          // this.$router.push('/cart/cartPage')
         })
     }
   },
@@ -146,7 +146,7 @@ export default {
 
   h4 {
     font-size: 1.8em;
-    color: #206998;
+    color: $customGray-Blue;
   }
 
   &__btn-place {

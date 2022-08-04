@@ -50,8 +50,8 @@
 
 <script>
 import Pagination from '@/components/Pagination.vue'
-import OrderModal from '@/components/OrderModal.vue'
-import DeleteModal from '@/components/DeleteModal.vue'
+import OrderModal from '@/components/modalController/OrderModal.vue'
+import DeleteModal from '@/components/modalController/DeleteModal.vue'
 export default {
   name: 'Orders-view',
   data () {

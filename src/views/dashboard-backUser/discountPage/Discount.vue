@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import CouponModal from '@/components/CouponModal.vue'
-import DeleteModal from '@/components/DeleteModal.vue'
+import CouponModal from '@/components/modalController/CouponModal.vue'
+import DeleteModal from '@/components/modalController/DeleteModal.vue'
 import Pagination from '@/components/Pagination.vue'
 
 export default {

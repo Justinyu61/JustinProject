@@ -80,6 +80,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
+.wrap {
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
 .showProduct {
   display: flex;
   justify-content: center;
@@ -120,7 +130,7 @@ export default {
       margin: 0 0 20px 0;
     }
     &--price {
-      color: #007698;
+      color: $customGray-Blue;
       margin: 20px 0;
       h6 {
         font-size: 1em;
@@ -146,8 +156,5 @@ export default {
       }
     }
   }
-}
-.showBody {
-  background: #000;
 }
 </style>

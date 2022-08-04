@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/AdminHeader.vue'
 import emitter from '@/methods/getEmitter'
-import ToastMessages from '@/components/ToastMessages.vue'
+import ToastMessages from '@/components/toastMessageController/ToastMessages.vue'
 
 export default {
   name: 'Dashboard-view',
