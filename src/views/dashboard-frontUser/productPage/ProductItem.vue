@@ -130,7 +130,8 @@ export default {
 
 .product-info {
   //border: 1px solid $customGray;
-  width: 50%;
+  //width: 50%;
+  margin: 0 auto;
   @media screen and (max-width: 768px) {
     margin: 10px 20px;
   }
