@@ -32,7 +32,7 @@
   <!--  </div>-->
   <!--  </div>-->
   <div class="wrap">
-    <div class="product-title-img">
+    <div class="product-img">
       <div class="product-title-img__img-place">
         <img :src="product.imageUrl" alt="">
       </div>
@@ -111,7 +111,7 @@ export default {
   }
 }
 
-.product-title-img {
+.product-img {
   //border: 1px solid $customGray;
   display: flex;
   justify-content: center;
@@ -129,10 +129,14 @@ export default {
 
 .product-info {
   //border: 1px solid $customGray;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 50%;
-  margin: 0 auto;
+  margin: auto;
   @media screen and (max-width: 768px) {
-    margin: 10px 20px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   h2 {
