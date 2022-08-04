@@ -42,6 +42,7 @@ export default {
       }
     }
   },
+  inject: ['emitter'],
   methods: {
     getProducts () {
       const getProductsApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
@@ -55,7 +56,7 @@ export default {
     },
     viewMore (id) {
       this.$router.push(`/products/product/${id}`)
-      console.log(id)
+      // console.log('index:', id)
     },
     addToCart (id) {
       const CartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`

@@ -1,20 +1,58 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <div class="container">
-    <div class="row justify-content-center">
-      <article class="col-8">
-        <h2>{{ product.title }}</h2>
-        <div>{{ product.content }}</div>
-        <div>{{ product.description }}</div>
-        <img :src="product.imageUrl" alt="" class="img-fluid mb-3">
-      </article>
-      <div class="col-4">
-        <div class="h5" v-if="product.price">{{ product.origin_price }} 元</div>
-        <hr>
-        <button type="button" class="btn btn-outline-danger"
-                @click="addToCart(product.id)">
-          加到購物車
-        </button>
+  <!--  <div class="container">-->
+  <!--    <div class="d-flex">-->
+  <!--    <div class="flex-row justify-content-center">-->
+  <!--      <div>-->
+  <!--      <article class="">-->
+  <!--        <h2>{{ product.title }}</h2>-->
+  <!--        <img :src="product.imageUrl" alt="product.title" class="img-fluid mb-3">-->
+  <!--      </article>-->
+  <!--      </div>-->
+  <!--      <div class="">-->
+  <!--        <div>-->
+  <!--        <div>品牌: {{ product.content }}</div>-->
+  <!--        <br>-->
+  <!--        <h5>簡介:</h5>-->
+  <!--        <div >{{ product.description }}</div>-->
+  <!--        <br>-->
+  <!--        <div class="h5" v-if="product.price">{{ product.origin_price }} 元</div>-->
+  <!--        <hr>-->
+  <!--        <button type="button" class="btn btn-outline-secondary  me-4"-->
+  <!--                @click="returnProducts">-->
+  <!--          返回商品頁-->
+  <!--        </button>-->
+  <!--        <button type="button" class="btn btn-outline-danger "-->
+  <!--                @click="addToCart(product.id)">-->
+  <!--          加到購物車-->
+  <!--        </button>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  </div>-->
+  <div class="wrap">
+    <div class="product-title-img">
+      <div class="product-title-img__img-place">
+        <img :src="product.imageUrl" alt="">
+      </div>
+    </div>
+    <div class="product-info">
+      <h2>{{ product.content }}</h2>
+      <p>{{ product.title }}</p>
+      <br>
+      <h3>{{ product.description }}</h3>
+      <br>
+      <h4>售價 : {{ product.origin_price }} 元</h4>
+      <div class="product-info__btn-place" v-if="product.price">
+                <button type="button" class="btn btn-outline-secondary"
+                        @click="returnProducts">
+                  返回商品頁
+                </button>
+                <button type="button" class="btn btn-outline-danger "
+                        @click="addToCart(product.id)">
+                  加到購物車
+                </button>
       </div>
     </div>
   </div>
@@ -27,25 +65,30 @@ export default {
     return {
       product: {},
       // 暫時強制寫入ID
-      // id: '-N8RuQkExvgSYPpdQUSb',
+      // id: '-N8SGAoLdPmoRP77xI5N',
       id: '',
       isLoading: false
     }
   },
+  inject: ['emitter'],
   methods: {
     getProduct () {
+      this.id = this.$route.params.productId
       const getProductItemApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
-      console.log('id:', this.id)
+      // console.log('id:', this.id)
       this.$http.get(getProductItemApi)
         .then((res) => {
           if (res.data.success) {
             this.product = res.data.product
+            // this.$httpMsgState(res, '顯示')
           }
-          console.log(res)
         })
         .catch((err) => {
           console.log(err)
         })
+    },
+    returnProducts () {
+      this.$router.push('/products/productsIndex')
     }
   },
   created () {
@@ -54,6 +97,79 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "src/assets/helpers/customVariables";
 
+.wrap {
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.product-title-img {
+  //border: 1px solid $customGray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //width: 50%;
+  &__img-place {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    img {
+      width: 60%;
+    }
+  }
+}
+
+.product-info {
+  //border: 1px solid $customGray;
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    margin: 10px 20px;
+  }
+
+  h2 {
+    text-align: center;
+    position: relative;
+    font-size: 1.8em;
+    &:after {
+      content: '';
+      width: 100%;
+      border-bottom: 2px solid #000;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+    }
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.8em;
+    color: #206998;
+  }
+
+  &__btn-place {
+    display: flex;
+    margin: 80px 0;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin: 0 10px;
+    }
+  }
+}
 </style>
