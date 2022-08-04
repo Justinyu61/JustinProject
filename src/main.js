@@ -13,6 +13,7 @@ import $httpMessageState from './methods/pushMessageState'
 const app = createApp(App)
 
 app.config.globalProperties.$filters = { currency, date }
+// $httpMessageState 此函式的用途是整合 Ajax 的錯誤事件，統一整理發送給予 Toast
 app.config.globalProperties.$httpMsgState = $httpMessageState
 // eslint-disable-next-line vue/multi-word-component-names
 app.component('Loading', Loading)
