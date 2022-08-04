@@ -121,7 +121,6 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
-
     img {
       width: 60%;
     }
@@ -165,7 +164,7 @@ export default {
 
   &__btn-place {
     display: flex;
-    margin: 80px 0;
+    margin: 10px 0;
     justify-content: center;
     align-items: center;
     button {
