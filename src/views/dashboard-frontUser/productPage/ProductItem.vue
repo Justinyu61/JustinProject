@@ -1,36 +1,5 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <!--  <div class="container">-->
-  <!--    <div class="d-flex">-->
-  <!--    <div class="flex-row justify-content-center">-->
-  <!--      <div>-->
-  <!--      <article class="">-->
-  <!--        <h2>{{ product.title }}</h2>-->
-  <!--        <img :src="product.imageUrl" alt="product.title" class="img-fluid mb-3">-->
-  <!--      </article>-->
-  <!--      </div>-->
-  <!--      <div class="">-->
-  <!--        <div>-->
-  <!--        <div>品牌: {{ product.content }}</div>-->
-  <!--        <br>-->
-  <!--        <h5>簡介:</h5>-->
-  <!--        <div >{{ product.description }}</div>-->
-  <!--        <br>-->
-  <!--        <div class="h5" v-if="product.price">{{ product.origin_price }} 元</div>-->
-  <!--        <hr>-->
-  <!--        <button type="button" class="btn btn-outline-secondary  me-4"-->
-  <!--                @click="returnProducts">-->
-  <!--          返回商品頁-->
-  <!--        </button>-->
-  <!--        <button type="button" class="btn btn-outline-danger "-->
-  <!--                @click="addToCart(product.id)">-->
-  <!--          加到購物車-->
-  <!--        </button>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--  </div>-->
   <div class="wrap">
     <div class="product-img">
       <div class="product-title-img__img-place">
@@ -73,14 +42,15 @@ export default {
   inject: ['emitter'],
   methods: {
     getProduct () {
-      this.id = this.$route.params.productId
       const getProductItemApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
       // console.log('id:', this.id)
+      this.isLoading = true
       this.$http.get(getProductItemApi)
         .then((res) => {
           if (res.data.success) {
             this.product = res.data.product
             // this.$httpMsgState(res, '顯示')
+            this.isLoading = false
           }
         })
         .catch((err) => {
@@ -89,9 +59,22 @@ export default {
     },
     returnProducts () {
       this.$router.push('/products/productsIndex')
+    },
+    addToCart (id, qty = 1) {
+      const addToCartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.isLoading = true
+      const toCary = { product_id: id, qty }
+      this.$http.post(addToCartApi, { data: toCary })
+        .then((res) => {
+          console.log(res)
+          this.$httpMsgState(res, '加入購物車')
+          this.isLoading = false
+          this.$router.push('/cart/cartPage')
+        })
     }
   },
   created () {
+    this.id = this.$route.params.productId
     this.getProduct()
   }
 }
