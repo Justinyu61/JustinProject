@@ -6,9 +6,10 @@ import Products from '@/views/dashboard-backUser/ProductControler/Products.vue'
 import Orders from '@/views/dashboard-backUser/orderConfirmation/Orders.vue'
 import Discount from '@/views/dashboard-backUser/discountPage/Discount.vue'
 import ProductBoard from '@/views/dashboard-frontUser/productPage/ProductBoard'
-import ProductIndex from '@/views/dashboard-frontUser/productPage/ProductIndex'
+import ProductIndex from '@/views/dashboard-frontUser/productPage/ProductPage'
 import ProductItem from '@/views/dashboard-frontUser/productPage/ProductItem'
-import UserCart from '@/views/dashboard-frontUser/cartPage/UserCart.vue'
+import CartBoard from '@/views/dashboard-frontUser/cartPage/CartBoard.vue'
+import CartPage from '@/views/dashboard-frontUser/cartPage/CartPage'
 
 const routes = [
   {
@@ -55,7 +56,13 @@ const routes = [
   },
   {
     path: '/cart',
-    component: UserCart
+    component: CartBoard,
+    children: [
+      {
+        path: 'cartPage',
+        component: CartPage
+      }
+    ]
   }
 ]
 
