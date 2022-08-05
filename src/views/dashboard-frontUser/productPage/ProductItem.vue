@@ -2,9 +2,7 @@
   <Loading :active="isLoading"></Loading>
   <div class="wrap">
     <div class="product-img">
-      <div class="product-title-img__img-place">
         <img :src="product.imageUrl" alt="">
-      </div>
     </div>
     <div class="product-info">
       <h2>{{ product.content }}</h2>
@@ -33,8 +31,6 @@ export default {
   data () {
     return {
       product: {},
-      // 暫時強制寫入ID
-      // id: '-N8SGAoLdPmoRP77xI5N',
       id: '',
       isLoading: false
     }
@@ -95,19 +91,14 @@ export default {
 }
 
 .product-img {
-  //border: 1px solid $customGray;
+  border: 1px solid $customGray;
   display: flex;
   justify-content: center;
   align-items: center;
-  //width: 50%;
-  &__img-place {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  //background: #000;
     img {
-      width: 60%;
+      width: 90%;
     }
-  }
 }
 
 .product-info {

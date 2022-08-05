@@ -18,9 +18,12 @@
         </div>
         <div class="showProduct__footer">
           <button type="button" class="view-more btn btn-outline-secondary" @click="viewMore(item.id)">
+            <font-awesome-icon :icon="['fas', 'search']"/>
             查看更多
           </button>
           <button type="button" class="add-cart btn btn-outline-secondary" @click="addToCart(item.id)">
+            <font-awesome-icon class="spinner-color" :icon="['fas', 'spinner']" v-if="this.status.loadingItem === item.id"/>
+            <font-awesome-icon :icon="['fas', 'shopping-cart']" v-else/>
             加到購物車
           </button>
         </div>
@@ -59,6 +62,7 @@ export default {
       // console.log('index:', id)
     },
     addToCart (id) {
+      // console.log(id)
       const CartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.status.loadingItem = id
       const cart = {
@@ -67,7 +71,8 @@ export default {
       }
       this.$http.post(CartApi, { data: cart })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
+          this.$httpMsgState(res, '加入購物車')
           this.status.loadingItem = ''
         })
     }
@@ -155,6 +160,9 @@ export default {
         color: white;
       }
     }
+  }
+  .spinner-color{
+    color: #0dcaf0;
   }
 }
 </style>
