@@ -7,12 +7,52 @@
         <li>Step 3 <br>完成訂單</li>
       </ul>
     </div>
+    <div class="mt-5 row justify-content-center">
+    <form class="col-md-6">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <Field id="email" name="email" type="email" placeholder="請輸入 Email" class="form-control"></Field>
+        <ErrorMessage name="" class="invalid-feedback"></ErrorMessage>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">收件人姓名:</label>
+        <Field id="name" name="姓名" type="text" placeholder="請輸入 姓名" class="form-control"></Field>
+        <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
+      </div>
+      <div class="mb-3">
+        <label for="tel" class="form-label">收件人電話:</label>
+        <Field id="tel" name="電話" type="tel" placeholder="請輸入 電話" class="form-control"></Field>
+        <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">收件人地址:</label>
+        <Field id="address" name="地址" type="text" placeholder="請輸入 地址" class="form-control"></Field>
+        <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
+      </div>
+    </form>
+  </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'UserCheck'
+  name: 'UserCheck',
+  data () {
+    return {
+      form: {
+        user: {
+          name: '',
+          email: '',
+          tel: '',
+          address: ''
+        },
+        message: ''
+      }
+    }
+  },
+  methods: {
+
+  }
 }
 </script>
 
