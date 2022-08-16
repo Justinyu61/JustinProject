@@ -10,6 +10,7 @@ import ProductIndex from '@/views/dashboard-frontUser/productPage/ProductPage'
 import ProductItem from '@/views/dashboard-frontUser/productPage/ProductItem'
 import CartBoard from '@/views/dashboard-frontUser/cartPage/CartBoard.vue'
 import CartPage from '@/views/dashboard-frontUser/cartPage/CartPage'
+import UserCheck from '@/views/dashboard-frontUser/cartPage/UserCheck'
 
 const routes = [
   {
@@ -61,6 +62,10 @@ const routes = [
       {
         path: 'cartPage',
         component: CartPage
+      },
+      {
+        path: 'userCheck',
+        component: UserCheck
       }
     ]
   }
