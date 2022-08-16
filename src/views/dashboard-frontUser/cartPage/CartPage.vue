@@ -8,7 +8,7 @@
         <li>Step 3 <br>完成訂單</li>
       </ul>
     </div>
-  <div class="col-md-5 container">
+  <div class="col-md-6 container">
     <div class="sticky-top">
       <table class="table align-middle">
         <thead>
