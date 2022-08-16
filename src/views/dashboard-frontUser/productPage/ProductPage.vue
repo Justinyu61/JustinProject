@@ -23,7 +23,7 @@
           </button>
           <button type="button" class="add-cart btn btn-outline-secondary" @click="addToCart(item.id)">
             <font-awesome-icon class="spinner-color" :icon="['fas', 'spinner']" v-if="this.status.loadingItem === item.id"/>
-            <font-awesome-icon :icon="['fas', 'shopping-cart']" v-else/>
+            <i class="bi bi-cart2" v-else></i>
             加到購物車
           </button>
         </div>
@@ -34,7 +34,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'ProductItem',
   data () {
@@ -71,14 +70,22 @@ export default {
       }
       this.$http.post(CartApi, { data: cart })
         .then((res) => {
-          // console.log(res)
+          // console.log('addToCart', res)
           this.$httpMsgState(res, '加入購物車')
           this.status.loadingItem = ''
         })
     }
+    // getCart () {
+    //   const getCartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+    //   this.$http.get(getCartApi)
+    //     .then((res) => {
+    //       console.log('getCart', res.data)
+    //     })
+    // }
   },
   created () {
     this.getProducts()
+    // this.getCart()
   }
 }
 </script>
