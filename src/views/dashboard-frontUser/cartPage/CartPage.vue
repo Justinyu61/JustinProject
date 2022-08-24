@@ -65,6 +65,10 @@
         </div>
       </div>
     </div>
+    <div class="linkBtn">
+      <router-link class="btn linkBtn__returnProduct" to="/products/productsIndex">繼續購物</router-link>
+      <router-link class="btn linkBtn__goCheck" to="/cart/userCheck">送出訂單</router-link>
+    </div>
   </div>
   </div>
 </template>
@@ -89,7 +93,7 @@ export default {
       this.$http.get(getCartApi)
         .then((res) => {
           if (res.data.data.carts.length !== 0) {
-            console.log('getCart:', res.data.data)
+            // console.log('getCart:', res.data.data)
             this.cart = res.data.data
             this.isLoading = false
           } else {
@@ -174,6 +178,15 @@ export default {
 
     &:first-child {
       background-color: $customGray-Blue;
+    }
+  }
+  .linkBtn {
+    display: flex;
+    justify-content: center;
+    &__returnProduct{
+    }
+    &__goCheck{
+      border: 1px solid black;
     }
   }
 }

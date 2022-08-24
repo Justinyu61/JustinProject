@@ -11,6 +11,7 @@ import ProductItem from '@/views/dashboard-frontUser/productPage/ProductItem'
 import CartBoard from '@/views/dashboard-frontUser/cartPage/CartBoard.vue'
 import CartPage from '@/views/dashboard-frontUser/cartPage/CartPage'
 import UserCheck from '@/views/dashboard-frontUser/cartPage/UserCheck'
+import FinalOrder from '@/views/dashboard-frontUser/cartPage/FinalOrder'
 
 const routes = [
   {
@@ -66,6 +67,10 @@ const routes = [
       {
         path: 'userCheck',
         component: UserCheck
+      },
+      {
+        path: 'order/:orderId',
+        component: FinalOrder
       }
     ]
   }

@@ -1,4 +1,5 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div class="wrap">
     <div class="stepper">
       <ul>
@@ -8,28 +9,36 @@
       </ul>
     </div>
     <div class="mt-5 row justify-content-center">
-    <form class="col-md-6">
+    <Form class="col-md-6" v-slot="{ errors }" @submit="createOrder">
       <div class="mb-3">
         <label for="email" class="form-label">Email:</label>
-        <Field id="email" name="email" type="email" placeholder="請輸入 Email" class="form-control"></Field>
+        <Field id="email" name="email" type="email" placeholder="請輸入 Email" class="form-control" :class="{ 'is-invalid': errors['email'] }" rules="email|required" v-model="form.user.email"></Field>
         <ErrorMessage name="" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
         <label for="name" class="form-label">收件人姓名:</label>
-        <Field id="name" name="姓名" type="text" placeholder="請輸入 姓名" class="form-control"></Field>
+        <Field id="name" name="姓名" type="text" placeholder="請輸入 姓名" class="form-control" :class="{ 'is-invalid': errors['姓名'] }" rules="required" v-model="form.user.name"></Field>
         <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
         <label for="tel" class="form-label">收件人電話:</label>
-        <Field id="tel" name="電話" type="tel" placeholder="請輸入 電話" class="form-control"></Field>
+        <Field id="tel" name="電話" type="tel" placeholder="請輸入 電話" class="form-control" :class="{ 'is-invalid': errors['電話'] }" rules="required" v-model="form.user.tel"></Field>
         <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">收件人地址:</label>
-        <Field id="address" name="地址" type="text" placeholder="請輸入 地址" class="form-control"></Field>
+        <Field id="address" name="地址" type="text" placeholder="請輸入 地址" class="form-control" :class="{ 'is-invalid': errors['地址'] }" rules="required" v-model="form.user.address"></Field>
         <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
       </div>
-    </form>
+      <div class="mb-3">
+        <label for="message" class="form-label">留言</label>
+        <textarea name="" id="message" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
+      </div>
+      <div class="text-end">
+        <router-link to="/cart/cartPage">返回購物車</router-link>
+        <button class="btn btn-danger">送出訂單</button>
+      </div>
+    </Form>
   </div>
   </div>
 </template>
@@ -47,11 +56,23 @@ export default {
           address: ''
         },
         message: ''
-      }
+      },
+      isLoading: false
     }
   },
   methods: {
-
+    createOrder () {
+      const postOrder = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
+      this.isLoading = false
+      const order = this.form
+      this.$http.post(postOrder, { data: order })
+        .then((res) => {
+          // console.log(res)
+          this.isLoading = false
+          const orderId = res.data.orderId
+          this.$router.push(`./order/${orderId}`)
+        })
+    }
   }
 }
 </script>
