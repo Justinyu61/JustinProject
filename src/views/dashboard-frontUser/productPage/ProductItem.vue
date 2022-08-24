@@ -62,7 +62,7 @@ export default {
       const toCary = { product_id: id, qty }
       this.$http.post(addToCartApi, { data: toCary })
         .then((res) => {
-          console.log('itemToCart', res)
+          // console.log('itemToCart', res)
           this.$httpMsgState(res, '加入購物車')
           this.isLoading = false
           // this.$router.push('/cart/cartPage')
