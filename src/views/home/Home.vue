@@ -133,7 +133,7 @@ export default {
   //height: 100%;
   //margin: auto;
   //display: flex;
-  background: #B4A582;
+  background: $customWrapBGColor;
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
@@ -149,7 +149,7 @@ export default {
   position: relative;
   &__text {
     position: absolute;
-    top: 10%;
+    top: 20%;
     right: 10%;
     left: 5%;
     color: $customTextColor;
@@ -162,7 +162,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1200px;
   margin: 0 auto;
   .introduction1,.introduction2,.introduction3 {
     width: 1200px;
