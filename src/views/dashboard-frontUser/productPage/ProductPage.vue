@@ -9,7 +9,7 @@
         </a>
         </div>
         <div class="showProduct__info">
-          <p class="showProduct__info--content">{{ item.content }}</p>
+          <p class="showProduct__info--content">{{ item.category }}</p>
           <p class="showProduct__info--title">{{ item.title }}</p>
         <div class="showProduct__info--price">
           <h6>價格</h6>

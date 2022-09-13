@@ -12,6 +12,7 @@ import CartBoard from '@/views/dashboard-frontUser/cartPage/CartBoard.vue'
 import CartPage from '@/views/dashboard-frontUser/cartPage/CartPage'
 import UserCheck from '@/views/dashboard-frontUser/cartPage/UserCheck'
 import FinalOrder from '@/views/dashboard-frontUser/cartPage/FinalOrder'
+import Brands from '@/views/dashboard-frontUser/brands/Brands'
 
 const routes = [
   {
@@ -41,6 +42,10 @@ const routes = [
         component: Discount
       }
     ]
+  },
+  {
+    path: '/brands',
+    component: Brands
   },
   {
     path: '/products',

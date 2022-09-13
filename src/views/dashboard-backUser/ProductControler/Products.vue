@@ -25,7 +25,7 @@
         <td>{{ item.category }}</td>
         <td>{{ item.title }}</td>
         <td><img class="img-fluid" style="max-width: 60%;" :src="item.imageUrl" alt=""></td>
-        <td>{{ item.content}}</td>
+        <td>{{ item.category}}</td>
         <td class="text-right">
           {{ $filters.currency(item.origin_price) }}
         </td>
@@ -84,7 +84,7 @@ export default {
           if (res.data.success) {
             this.products = res.data.products
             this.pagination = res.data.pagination
-            // console.log(res.data)
+            console.log(res.data)
           }
         })
     },
