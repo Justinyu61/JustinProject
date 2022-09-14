@@ -113,7 +113,7 @@ export default {
 @import "src/assets/helpers/customVariables";
 .wrap {
   height: auto;
-  background: #B4A582;
+  background: $customWrapBGColor;
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -128,6 +128,10 @@ export default {
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+  }
   &__card {
     height: auto;
     display: flex;

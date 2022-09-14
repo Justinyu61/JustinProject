@@ -25,6 +25,7 @@
         </div>
       </div>
       <div class="introduction2">
+        <div class="introduction2__img4"></div>
         <div class="introduction1__info">
           <div class="introduction1__info--text">
             <h2>About BAMFORD</h2>
@@ -128,18 +129,14 @@ export default {
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
 .wrap {
-  //max-width: 1200px;
-  //width: 100%;
-  //height: 100%;
-  //margin: auto;
-  //display: flex;
   background: $customWrapBGColor;
   @media screen and (max-width: 768px) {
+    display: flex;
     flex-direction: column;
   }
-  //background: $customBackground;
 }
 .banner {
+  width: 100%;
   height: 65vh;
   background-image: url("../../assets/image/indexpage1.jpg");
   background-size: cover;
@@ -158,25 +155,27 @@ export default {
 .main {
   max-width: 1200px;
   height: 100%;
+  margin: 0 auto;
   background: $customBackground;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
   .introduction1,.introduction2,.introduction3 {
-    width: 1200px;
+    width: 100%;
     margin: 30px;
     padding: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    //background: yellow;
-    &__img1,&__img2,&__img3 {
+    &__img1,&__img2,&__img3,&__img4 {
       background-size: cover;
       background-repeat: no-repeat;
       margin: 0 1em;
       width: 38%;
       height: 500px;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
     }
     &__img1 {
       background-position: 30% 65%;
@@ -185,18 +184,31 @@ export default {
     &__img2 {
       background-position: 40%;
       background-image: url("../../assets/image/BAMFORD.jpg");
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
     &__img3 {
       background-position: 98%;
       background-image: url("../../assets/image/MALIN+GOETZ.jpg");
     }
+    &__img4 {
+      background-position: 40%;
+      background-image: url("../../assets/image/BAMFORD.jpg");
+      display: none;
+      @media screen and (max-width: 768px) {
+        display: block;
+      }
+    }
     &__info {
       padding: 10px;
       margin: 0 auto;
       width: 48%;
-      //background: orange;
       text-align: center;
       color: $customTextColor-white;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
       &--text {
         h2 {
           font-weight: 700;
@@ -224,6 +236,11 @@ export default {
         }
       }
     }
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      flex-direction: column;
+      margin: 0;
+    }
   }
 }
 .footer {
@@ -231,6 +248,9 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 150px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   ul{
     position: relative;
     display: flex;
