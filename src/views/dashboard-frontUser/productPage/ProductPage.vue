@@ -140,10 +140,7 @@ export default {
 }
 
 .container{
-  margin: 0;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
+  padding: 0;
 .showProduct {
   max-width: 1200px;
   width: 100%;

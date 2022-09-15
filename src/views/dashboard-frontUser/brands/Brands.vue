@@ -160,6 +160,7 @@ export default {
 }
 
 .container{
+  padding: 0;
 .showProduct {
   max-width: 1200px;
   width: 100%;
