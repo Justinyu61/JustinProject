@@ -24,3 +24,12 @@ export default {
   }
 }
 </script>
+<style  lang="scss" scoped>
+.toast-container {
+  position: fixed;
+  top: 1000px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+</style>

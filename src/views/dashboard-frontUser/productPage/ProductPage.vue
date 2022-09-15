@@ -1,6 +1,13 @@
 <template>
   <div class="wrap">
-    <div class="showProduct mt-4">
+    <div class="banner">
+      <div class="banner__text">
+        <h2>讓居家的時光<br>從休憩昇華成享受</h2>
+      </div>
+    </div>
+    <SideCart/>
+    <div class="container">
+    <div class="showProduct ">
       <template v-for="item in products" :key="item.id">
       <div class="showProduct__card" style="width: 18rem;">
         <div class="showProduct__card--img">
@@ -31,9 +38,11 @@
       </template>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
+import SideCart from '@/components/SideCart'
 export default {
   name: 'ProductItem',
   data () {
@@ -43,6 +52,9 @@ export default {
         loadingItem: ''
       }
     }
+  },
+  components: {
+    SideCart
   },
   inject: ['emitter'],
   methods: {
@@ -93,83 +105,127 @@ export default {
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
 .wrap {
-  max-width: 1200px;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  display: flex;
+  height: auto;
+  background: $customWrapBGColor;
   @media screen and (max-width: 768px) {
+    display: flex;
     flex-direction: column;
   }
 }
+
+.banner {
+  width: 100%;
+  height: 65vh;
+  background-image: url("../../../assets/image/jessica-delp-smNzhFQRktg-unsplash.jpg");
+  background-size: cover;
+  background-position: 50% 80%;
+  background-repeat: no-repeat;
+  opacity: 75%;
+  position: relative;
+  &__text {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    left: 5%;
+    color: $customTextColor;
+  }
+  @media screen and (max-width: 768px) {
+    height: 40vh;
+  }
+}
+
+.container{
+  margin: 0;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 .showProduct {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  background: $customTextColor-white;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
+  @media screen and (max-width: 768px) {
+    background: $customBackground;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__card {
+    height: auto;
     display: flex;
     flex-direction: column;
-    width: 40%;
-    margin: 12px;
+    margin: 0 auto;
+    padding: 20px;
     overflow: hidden;
-    box-shadow: 0 0 5px $customGray;
-    border-radius: 6px;
-    text-align: center;
+    text-align: left;
+    width: 24rem;
+
     &--img {
-      display: flex;
-      align-items: center;
       width: 100%;
-      height: 300px;
       transition: .3s ease-in-out;
+      margin-bottom: 3px;
+
       &:hover {
         transform: scale(1.05);
       }
-      img{
-        width: 80%;
+
+      img {
+        width: 100%;
         object-fit: cover;
       }
     }
   }
-  &__info{
-    &--content {
-      font-size: 1em;
-      font-weight: bold;
-      margin: 5px 0;
-    }
-    &--title {
-      font-size: .8em;
-      font-weight: bolder;
-      margin: 0 0 20px 0;
-    }
-    &--price {
-      color: $customGray-Blue;
-      margin: 20px 0;
-      h6 {
-        font-size: 1em;
-        font-weight: bolder;
-      }
-      p {
-        font-size: 1.2em;
-      }
-    }
-  }
-  &__footer{
+
+  &__footer {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 2em;
-    .view-more, .add-cart{
-      transition: .5s ease-in-out;
-      &:disabled{
-        opacity: 0.3;
+    justify-content: center;
+    align-items: center;
+
+    &--info {
+      color: $customBtnTextColor;
+      //margin: 0 80px;
+      margin: 0 auto;
+      @media screen and (max-width: 768px) {
+        color: $customTextColor-white;
       }
-      &:hover {
-        background-color: $customGray;
-        color: white;
+
+      &--content {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 5px 0;
+      }
+
+      &--title {
+        font-size: .8em;
+        font-weight: bolder;
+        margin: 0 0 20px 0;
+      }
+
+      &--price {
+        margin: 20px 0;
+
+        h6 {
+          font-size: 1.5em;
+          font-weight: bolder;
+        }
+
+        p {
+          font-size: .9em;
+        }
       }
     }
+
+    &--btn {
+      margin: 0 auto;
+    }
   }
-  .spinner-color{
+
+  .spinner-color {
     color: #0dcaf0;
   }
+}
 }
 </style>

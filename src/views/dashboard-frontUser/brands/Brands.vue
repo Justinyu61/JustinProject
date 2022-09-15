@@ -1,5 +1,12 @@
 <template>
   <div class="wrap">
+    <div class="banner">
+      <div class="banner__text">
+        <h2>讓居家的時光<br>從休憩昇華成享受</h2>
+      </div>
+    </div>
+    <SideCart/>
+    <div class="container">
     <div class="showProduct">
       <template v-for="item in filterProducts" :key="item.id">
         <div class="showProduct__card" >
@@ -28,10 +35,13 @@
         </div>
       </template>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
+import SideCart from '@/components/SideCart'
+
 export default {
   name: 'BrandsView',
   data () {
@@ -45,6 +55,9 @@ export default {
         loadingItem: ''
       }
     }
+  },
+  components: {
+    SideCart
   },
   inject: ['$httpMessageState', 'emitter'],
   watch: {
@@ -119,50 +132,82 @@ export default {
     flex-direction: column;
   }
 }
+
+.banner {
+  width: 100%;
+  height: 65vh;
+  background-image: url("../../../assets/image/jessica-delp-smNzhFQRktg-unsplash.jpg");
+  background-size: cover;
+  background-position: 50% 80%;
+  background-repeat: no-repeat;
+  opacity: 75%;
+  position: relative;
+  &__text {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    left: 5%;
+    color: $customTextColor;
+  }
+  @media screen and (max-width: 768px) {
+    height: 40vh;
+  }
+}
+
+.container{
 .showProduct {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 6em;
   background: $customTextColor-white;
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
   @media screen and (max-width: 768px) {
+    background: $customBackground;
     justify-content: center;
     align-items: center;
   }
+
   &__card {
     height: auto;
     display: flex;
     flex-direction: column;
-    margin: 1px;
+    margin: 0 auto;
     padding: 20px;
     overflow: hidden;
     text-align: left;
     width: 24rem;
-      &--img {
-        width: 100%;
-        transition: .3s ease-in-out;
-        margin-bottom: 3px;
-        &:hover {
-          transform: scale(1.05);
-        }
 
-        img {
-          width: 100%;
-          object-fit: cover;
-        }
+    &--img {
+      width: 100%;
+      transition: .3s ease-in-out;
+      margin-bottom: 3px;
+
+      &:hover {
+        transform: scale(1.05);
       }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   }
-  &__footer{
+
+  &__footer {
     display: flex;
     justify-content: center;
     align-items: center;
+
     &--info {
       color: $customBtnTextColor;
       //margin: 0 80px;
       margin: 0 auto;
+
+      @media screen and (max-width: 768px) {
+        color: $customTextColor-white;
+      }
       &--content {
         font-size: 1.2em;
         font-weight: bold;
@@ -188,12 +233,15 @@ export default {
         }
       }
     }
+
     &--btn {
       margin: 0 auto;
     }
   }
-  .spinner-color{
+
+  .spinner-color {
     color: #0dcaf0;
   }
+}
 }
 </style>

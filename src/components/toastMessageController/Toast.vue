@@ -28,6 +28,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.toast {
+  margin-top: 45vh;
+}
 </style>

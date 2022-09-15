@@ -1,15 +1,28 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="wrap">
+    <div class="container">
+      <h2>購物車</h2>
     <div class="stepper">
       <ul>
-        <li>Step 1 <br>確認購物車</li>
-        <li>Step 2 <br>填寫資料</li>
+        <li >Step 1 <br>確認購物車</li>
+        <div class="arrowIconRight">
+        <font-awesome-icon  :icon="['fas', 'arrow-right']"/>
+        </div>
+        <div class="arrowIconDown">
+          <font-awesome-icon  :icon="['fas', 'arrow-down']"/>
+        </div>
+        <li >Step 2 <br>填寫資料</li>
+        <div class="arrowIconRight">
+          <font-awesome-icon  :icon="['fas', 'arrow-right']"/>
+        </div>
+        <div class="arrowIconDown">
+          <font-awesome-icon  :icon="['fas', 'arrow-down']"/>
+        </div>
         <li>Step 3 <br>完成訂單</li>
       </ul>
     </div>
-  <div class="col-md-6 container">
-    <div class="sticky-top">
+    <div class="cartBody">
       <table class="table align-middle">
         <thead>
           <tr>
@@ -152,7 +165,44 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
+.wrap {
+  height: auto;
+  background: $customWrapBGColor;
+  @media screen and (max-width: 768px) {
+    margin-top: 100px;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  background: $customBackground;
+  h2 {
+    font-size: 3em;
+    color: white;
+    position: relative;
+    margin-bottom: 10px;
+    text-align: center;
+    &:after {
+      content: '';
+      width: 200px;
+      border-bottom: 5px solid white;
+      position: absolute;
+      bottom: -30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
 .stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
   ul {
     display: flex;
     justify-content: space-around;
@@ -160,10 +210,18 @@ export default {
     &:before {
       content: "";
       position: absolute;
-      bottom: -30px;
+      bottom: -10px;
       left: 0;
       width: 100%;
       border-top: 3px solid #ffffff;
+    }
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 10px;
+      padding: 0;
+      width: 100%;
     }
   }
 
@@ -175,19 +233,43 @@ export default {
     text-align: center;
     line-height: 30px;
     color: white;
-
+    list-style: none;
     &:first-child {
       background-color: $customGray-Blue;
     }
+    @media screen and (max-width: 768px) {
+      font-size: 1em;
+      padding: 1px;
+      margin: 10px;
+      border-radius: 0;
+      width: 80%;
+    }
   }
-  .linkBtn {
-    display: flex;
-    justify-content: center;
-    &__returnProduct{
+  .arrowIconRight {
+    position: relative;
+    font-size: 3em;
+    top: 10px;
+    @media screen and (max-width: 768px) {
+      display: none;
     }
-    &__goCheck{
-      border: 1px solid black;
+  }
+  .arrowIconDown {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1em;
     }
+  }
+}
+.linkBtn {
+  display: flex;
+  justify-content: center;
+  &__returnProduct{
+  }
+  &__goCheck{
+    border: 1px solid black;
   }
 }
 </style>

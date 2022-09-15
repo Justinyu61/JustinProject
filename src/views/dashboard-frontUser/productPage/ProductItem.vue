@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import emitter from '@/methods/getEmitter'
+
 export default {
   name: 'ProductItem',
   data () {
@@ -35,7 +37,11 @@ export default {
       isLoading: false
     }
   },
-  inject: ['emitter'],
+  provide () {
+    return {
+      emitter
+    }
+  },
   methods: {
     getProduct () {
       const getProductItemApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`

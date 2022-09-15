@@ -1,4 +1,5 @@
 <template>
+  <SideCart/>
   <div class="wrap">
     <div class="banner">
       <div class="banner__text">
@@ -97,8 +98,12 @@
 </template>
 
 <script>
+import SideCart from '@/components/SideCart'
 export default {
   name: 'Home-view',
+  components: {
+    SideCart
+  },
   data () {
     return {
       brandDiptyque: [],
@@ -146,10 +151,17 @@ export default {
   position: relative;
   &__text {
     position: absolute;
-    top: 20%;
+    top: 30%;
     right: 10%;
     left: 5%;
     color: $customTextColor;
+    @media screen and (max-width: 768px) {
+      font-size: 1em;
+      left: 40%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    height: 40vh;
   }
 }
 .main {
