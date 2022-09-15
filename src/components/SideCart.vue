@@ -1,5 +1,5 @@
 <template>
-  <div class="small-cart-wrap">
+  <div class="smallCart">
     <div class="container">
       <div class="cartIcon">
       <button class="cartIcon__img" @click="sideCartToggle">
@@ -21,7 +21,7 @@
             <div class="cart-header">
               <h2>
                 <font-awesome-icon :icon="['fas', 'cart-shopping']"/>
-                XX購物車
+                購物車
               </h2>
               <a href="#" @click.prevent="sideCartToggle">
                 <font-awesome-icon :icon="['fas', 'xmark']"/>
@@ -114,8 +114,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
-.small-cart-wrap{
-  background: #000;
+.smallCart{
   .container {
     margin: auto;
     max-width: 1200px;
@@ -202,22 +201,22 @@ img {
 .cart-wrap {
   width: 350px;
   height: 100%;
-  background: $customBackground;
+  background-color: $customBackground;
   position: fixed;
-  top: 11vh;
+  top: 0;
   right: 0;
-  z-index: 3;
+  z-index: 99999;
   @media screen and (max-width: 768px) {
     overflow-y: auto;
   }
 
   .cart-container {
     width: 310px;
-    margin: 50px 20px;
+    margin: 60px 20px;
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 1.8em;
     color: white;
     position: relative;
     margin-bottom: 50px;
@@ -247,7 +246,7 @@ img {
     right: 340px;
     width: 60px;
     height: 80px;
-    font-size: 3em;
+    font-size: 2em;
     background: $customBackground;
     color: white;
     border-radius: 10px;
@@ -311,13 +310,13 @@ img {
 
   h4 {
     font-size: 1em;
-    color: #000;
+    color: $customTextColor-white;
     padding-right: 10px;
   }
 
   h5 {
     font-size: 1em;
-    color: #000;
+    color: $customTextColor-white;
   }
 
   .cart-footer {
