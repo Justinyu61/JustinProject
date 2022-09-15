@@ -142,15 +142,20 @@ export default {
   background-repeat: no-repeat;
   opacity: 75%;
   position: relative;
+  @media screen and (max-width: 768px) {
+  height: 40vh;
+}
   &__text {
     position: absolute;
     top: 30%;
     right: 10%;
     left: 5%;
     color: $customTextColor;
-  }
-  @media screen and (max-width: 768px) {
-    height: 40vh;
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 1.2em;
+      }
+    }
   }
 }
 

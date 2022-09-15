@@ -116,21 +116,26 @@ export default {
 .banner {
   width: 100%;
   height: 65vh;
-  background-image: url("../../../assets/image/jessica-delp-smNzhFQRktg-unsplash.jpg");
+  background-image: url("../../../assets/image/mediamodifier-V49ntT_Wusw-unsplash.jpg");
   background-size: cover;
-  background-position: 50% 80%;
+  background-position: 50% 60%;
   background-repeat: no-repeat;
   opacity: 75%;
   position: relative;
+  @media screen and (max-width: 768px) {
+    height: 40vh;
+  }
   &__text {
     position: absolute;
     top: 30%;
     right: 10%;
     left: 5%;
     color: $customTextColor;
-  }
-  @media screen and (max-width: 768px) {
-    height: 40vh;
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 1.2em;
+      }
+    }
   }
 }
 
