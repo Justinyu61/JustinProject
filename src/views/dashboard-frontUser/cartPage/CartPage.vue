@@ -169,7 +169,6 @@ export default {
   height: auto;
   background: $customWrapBGColor;
   @media screen and (max-width: 768px) {
-    margin-top: 100px;
   }
 }
 .container {
@@ -181,6 +180,9 @@ export default {
   width: 100%;
   height: 100%;
   background: $customBackground;
+  @media screen and (max-width: 768px) {
+    padding: 11vh 0 150px 0;
+  }
   h2 {
     font-size: 3em;
     color: white;

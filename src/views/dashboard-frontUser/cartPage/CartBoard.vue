@@ -1,9 +1,9 @@
 <template>
   <UserHeader></UserHeader>
-  <div class="container-fluid mt-3 position-relative">
+<!--  <div class="container-fluid mt-3 position-relative"></div>-->
     <ToastMessages></ToastMessages>
     <router-view/>
-  </div>
+
 </template>
 
 <script>

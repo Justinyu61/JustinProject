@@ -155,7 +155,7 @@ img {
 
   @media screen and (max-width: 768px) {
     right: -10px;
-    bottom: -10px;
+    bottom: 150px;
     width: 80px;
     height: 80px;
   }
@@ -191,10 +191,11 @@ img {
   text-align: center;
   opacity: 75%;
   @media screen and (max-width: 768px) {
-    bottom: 45px;
+    bottom: 210px;
     right: 45px;
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
+    padding: 1px;
   }
 }
 

@@ -87,6 +87,12 @@ export default {
 .navbar{
   height: 11vh;
   padding:20px;
+  @media screen and (max-width: 844px) {
+    height: 20vh;
+  }
+  @media screen and (max-width: 768px) {
+    height: 11vh;
+  }
 }
 .navbar-brand{
   //font-family: 'Comforter Brush', cursive;
