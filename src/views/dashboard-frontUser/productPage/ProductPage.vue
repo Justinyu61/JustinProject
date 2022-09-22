@@ -5,7 +5,6 @@
         <h2>讓居家的時光<br>從休憩昇華成享受</h2>
       </div>
     </div>
-    <SideCart/>
     <div class="container">
     <div class="showProduct ">
       <template v-for="item in products" :key="item.id">
@@ -44,7 +43,6 @@
 </template>
 
 <script>
-import SideCart from '@/components/SideCart'
 export default {
   name: 'ProductItem',
   data () {
@@ -54,9 +52,6 @@ export default {
         loadingItem: ''
       }
     }
-  },
-  components: {
-    SideCart
   },
   inject: ['emitter'],
   methods: {

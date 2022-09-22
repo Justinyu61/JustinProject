@@ -95,7 +95,6 @@ export default {
   }
 }
 .navbar-brand{
-  //font-family: 'Comforter Brush', cursive;
   font-size:2rem;
 }
 </style>

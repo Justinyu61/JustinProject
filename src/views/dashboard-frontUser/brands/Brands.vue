@@ -105,6 +105,10 @@ export default {
           this.isLoading = false
         })
     },
+    viewMore (id) {
+      this.$router.push(`/products/product/${id}`)
+      // console.log('index:', id)
+    },
     addToCart (id, qty = 1) {
       const addToCartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true

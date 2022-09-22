@@ -214,6 +214,10 @@ img {
   .cart-container {
     width: 310px;
     margin: 60px 20px;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      margin: 60px auto;
+    }
   }
 
   h2 {

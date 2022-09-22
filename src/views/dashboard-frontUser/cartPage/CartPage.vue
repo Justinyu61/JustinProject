@@ -23,13 +23,13 @@
       </ul>
     </div>
     <div class="cartBody">
-      <table class="table align-middle">
+      <table class="table align-middle product-table">
         <thead>
           <tr>
             <th ></th>
-            <th width="300">品名</th>
-            <th style="width: 120px">數量</th>
-            <th >單價</th>
+            <th width="300" class="product-title">品名</th>
+            <th style="width: 120px" class="product-unit">數量</th>
+            <th class="product-price">單價</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
                 <i class="bi bi-x"></i>
               </button>
             </td>
-            <td>
+            <td class="product-title">
               {{ item.product.title }}
               <div class="text-success" v-if="item.coupon">
                 已套用優惠券
@@ -51,7 +51,7 @@
                 <div class="input-group-text">/ {{ item.product.unit }}</div>
               </div>
             </td>
-            <td class="text-end">
+            <td class="text-end product-price">
 
               <small v-if="cart.final_total !== cart.total" class="text-success">折扣價：</small>
               {{ $filters.currency(item.final_total)}}
@@ -60,12 +60,12 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="3" class="text-end">總計</td>
-            <td class="text-end">{{ $filters.currency(cart.total) }}</td>
+            <td colspan="3" class="text-end product-total-price">總計</td>
+            <td class="text-end product-price">{{ $filters.currency(cart.total) }}</td>
           </tr>
           <tr v-if="cart.final_total !== cart.total">
             <td colspan="3" class="text-end text-success" v-if="cart.final_total !== cart.total">折扣價</td>
-            <td class="text-end text-success">{{ $filters.currency(cart.final_total) }}</td>
+            <td class="text-end text-success product-price">{{ $filters.currency(cart.final_total) }}</td>
           </tr>
         </tfoot>
       </table>
@@ -166,53 +166,63 @@ export default {
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
 .wrap {
-  height: auto;
-  background: $customWrapBGColor;
+  width: 100%;
+  height: 100%;
+  background-color: $customWrapBGColor;
+  padding-top: 11vh;
   @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
   }
 }
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
+  margin: 0 auto;
   max-width: 1200px;
   width: 100%;
   height: 100%;
   background: $customBackground;
+  padding: 198px 20px;
+
   @media screen and (max-width: 768px) {
-    padding: 11vh 0 150px 0;
+    padding: 11vh 0 20px 0;
   }
   h2 {
     font-size: 3em;
     color: white;
     position: relative;
-    margin-bottom: 10px;
+    //margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     text-align: center;
     &:after {
       content: '';
       width: 200px;
       border-bottom: 5px solid white;
       position: absolute;
-      bottom: -30%;
+      margin: 20px auto;
+      bottom: -50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
   }
 }
 .stepper {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  margin: 20px 0;
   ul {
     display: flex;
     justify-content: space-around;
     position: relative;
+    padding: 0;
     &:before {
       content: "";
       position: absolute;
-      bottom: -10px;
+      bottom: -30px;
       left: 0;
       width: 100%;
       border-top: 3px solid #ffffff;
@@ -228,14 +238,16 @@ export default {
   }
 
   li {
+    width: 200px;
     background: $customLightGray;
     border-radius: 15px;
-    padding: 20px 80px;
+    padding: 20px 70px;
     font-size: 1em;
     text-align: center;
     line-height: 30px;
     color: white;
     list-style: none;
+    margin: 0;
     &:first-child {
       background-color: $customGray-Blue;
     }
@@ -251,12 +263,14 @@ export default {
     position: relative;
     font-size: 3em;
     top: 10px;
+    margin: 0 30px;
     @media screen and (max-width: 768px) {
       display: none;
     }
   }
   .arrowIconDown {
     display: none;
+    margin: 0 30px;
     @media screen and (max-width: 768px) {
       display: flex;
       justify-content: center;
@@ -265,13 +279,32 @@ export default {
     }
   }
 }
+.product-table {
+  .product-title, .product-unit, .product-price{
+    color: $customTextColor-white;
+  }
+  .product-total-price {
+    color: $customBtnTextColor;
+  }
+}
+.input-group {
+  margin: 0 auto;
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+}
 .linkBtn {
   display: flex;
   justify-content: center;
-  &__returnProduct{
-  }
-  &__goCheck{
-    border: 1px solid black;
+  align-items: center;
+  margin: 10px 0;
+  .btn {
+    margin: 0 1.5em;
+    @media screen and (max-width: 768px) {
+      border-color: white;
+      color: white;
+    }
   }
 }
 </style>
