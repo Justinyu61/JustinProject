@@ -208,6 +208,7 @@ img {
   right: 0;
   z-index: 99999;
   @media screen and (max-width: 768px) {
+    width: 100%;
     overflow-y: auto;
   }
 
@@ -215,14 +216,13 @@ img {
     width: 310px;
     margin: 60px 20px;
     @media screen and (max-width: 768px) {
-      width: 100%;
       margin: 60px auto;
     }
   }
 
   h2 {
     font-size: 1.8em;
-    color: white;
+    color: $customTextColor-white;
     position: relative;
     margin-bottom: 50px;
 
@@ -232,12 +232,12 @@ img {
       bottom: -25px;
       left: 0;
       width: 310px;
-      border-bottom: 3px solid white;
+      border-bottom: 3px solid $customTextColor-white;
     }
   }
 
   h3 {
-    font-size: 1.2em;
+    font-size: .9em;
     color: white;
     margin-top: 10px;
   }
@@ -314,7 +314,7 @@ img {
   }
 
   h4 {
-    font-size: 1em;
+    font-size: .7em;
     color: $customTextColor-white;
     padding-right: 10px;
   }

@@ -91,10 +91,10 @@ export default {
 @import "src/assets/helpers/customVariables";
 
 .wrap {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: $customWrapBGColor;
-  padding-top: 11vh;
+  padding-top: 10vh;
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -105,7 +105,7 @@ export default {
   width: 80%;
   color: $customTextColor;
   background: $customTextColor-white;
-  padding: 353.5px 20px;
+  //padding: 353.5px 20px;
   margin: 0 auto;
 
   @media screen and (max-width: 768px) {

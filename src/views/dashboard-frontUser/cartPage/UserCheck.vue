@@ -25,27 +25,27 @@
     <div class="mt-5 row justify-content-center">
     <Form class="col-md-6" v-slot="{ errors }" @submit="createOrder">
       <div class="mb-3 w-100">
-        <label for="email" class="form-label">Email:</label>
+        <label for="email" class="form-label text-control">Email:</label>
         <Field id="email" name="email" type="email" placeholder="請輸入 Email" class="form-control" :class="{ 'is-invalid': errors['email'] }" rules="email|required" v-model="form.user.email"></Field>
         <ErrorMessage name="" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
-        <label for="name" class="form-label">收件人姓名:</label>
+        <label for="name" class="form-label text-control">收件人姓名:</label>
         <Field id="name" name="姓名" type="text" placeholder="請輸入 姓名" class="form-control" :class="{ 'is-invalid': errors['姓名'] }" rules="required" v-model="form.user.name"></Field>
         <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
-        <label for="tel" class="form-label">收件人電話:</label>
+        <label for="tel" class="form-label text-control">收件人電話:</label>
         <Field id="tel" name="電話" type="tel" placeholder="請輸入 電話" class="form-control" :class="{ 'is-invalid': errors['電話'] }" rules="required" v-model="form.user.tel"></Field>
         <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
-        <label for="address" class="form-label">收件人地址:</label>
+        <label for="address" class="form-label text-control">收件人地址:</label>
         <Field id="address" name="地址" type="text" placeholder="請輸入 地址" class="form-control" :class="{ 'is-invalid': errors['地址'] }" rules="required" v-model="form.user.address"></Field>
         <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
       </div>
       <div class="mb-3">
-        <label for="message" class="form-label">留言</label>
+        <label for="message" class="form-label text-control">留言</label>
         <textarea name="" id="message" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
       </div>
       <div class="text-end">
@@ -95,10 +95,9 @@ export default {
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
 .wrap {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
   background-color: $customWrapBGColor;
-  padding-top: 11vh;
+  padding-top: 10vh;
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -107,33 +106,45 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: auto;
+  margin:0 auto;
   max-width: 1200px;
   width: 100%;
   height: 100%;
-  background: $customBackground;
+  background: $customTextColor-white;
+  padding: 10px 0;
   @media screen and (max-width: 768px) {
-    padding: 11vh 0 20px 0;
+    background: $customBackground;
+    padding: 1px 0 20px 0;
   }
   h2 {
     font-size: 3em;
-    color: white;
+    color: $customBtnTextColor;
     position: relative;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     text-align: center;
+    @media screen and (max-width: 768px) {
+      font-size: 2em;
+      color: $customTextColor-white;
+    }
     &:after {
       content: '';
       width: 200px;
-      border-bottom: 5px solid white;
+      border-bottom: 5px solid $customBtnTextColor;
       position: absolute;
-      bottom: -30%;
+      margin: 20px auto;
+      bottom: -50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      @media screen and (max-width: 768px) {
+        margin: 1px auto;
+        bottom: -30%;
+        border-bottom: 3px solid $customTextColor-white;
+      }
     }
   }
 }
 .stepper {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,13 +153,18 @@ export default {
     display: flex;
     justify-content: space-around;
     position: relative;
+    padding: 0;
     &:before {
       content: "";
       position: absolute;
-      bottom: -10px;
+      bottom: -30px;
       left: 0;
       width: 100%;
-      border-top: 3px solid #ffffff;
+      border-top: 3px solid $customBtnTextColor;
+      @media screen and (max-width: 768px) {
+        bottom: -10px;
+        border-top: 3px solid $customTextColor-white;
+      }
     }
     @media screen and (max-width: 768px) {
       flex-direction: column;
@@ -161,16 +177,18 @@ export default {
   }
 
   li {
-    background: $customLightGray;
+    width: 200px;
+    background: $customTextColor;
     border-radius: 15px;
-    padding: 20px 80px;
+    padding: 20px 0;
     font-size: 1em;
     text-align: center;
     line-height: 30px;
     color: white;
     list-style: none;
+    margin: 0;
     &:nth-child(4) {
-      background-color: $customGray-Blue;
+      background-color: $customLightGray;
     }
     @media screen and (max-width: 768px) {
       font-size: 1em;
@@ -185,12 +203,14 @@ export default {
     position: relative;
     font-size: 3em;
     top: 10px;
+    margin: 0 30px;
     @media screen and (max-width: 768px) {
       display: none;
     }
   }
   .arrowIconDown {
     display: none;
+    margin: 0 30px;
     @media screen and (max-width: 768px) {
       display: flex;
       justify-content: center;
@@ -199,11 +219,27 @@ export default {
     }
   }
 }
+.text-control{
+  @media screen and (max-width: 768px) {
+    margin: 3px 10px;
+    font-weight: bolder;
+    color: $customTextColor-white;
+  }
+}
+.form-control {
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0 0 0 60px;
+  }
+}
 .text-end {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+  @media screen and (max-width: 768px) {
+    margin: 5px 0;
+  }
   .btn {
     margin: 0 1.5em;
     @media screen and (max-width: 768px) {
