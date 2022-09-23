@@ -1,12 +1,13 @@
 <template>
 
   <div class="header">
+    <div class="header-container" :class="{'scroll-nav' : scrollNav}">
     <div class="header__hide-box">
-      <Navbar/>
+<!--      <Navbar @click="toggleNav"/>-->
     </div>
     <div class="header__logo">
       <router-link to="/" >
-<!--        <img src="../assets/image/1010_APOTHECARY_LOGO-OK-01.png" alt>-->
+        <img src="../assets/image/1010_APOTHECARY_LOGO-OK-01.png" alt>
       </router-link>
     </div>
     <div class="header__mini-bar">
@@ -73,12 +74,40 @@
         </div>
       </div>
     </div>
+    </div>
+    <div class="nav-container" >
+      <nav class="scroll-menu" v-show="!mobile">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
+          <li class="nav-item"><router-link to="/" class="nav-link" >品牌</router-link></li>
+          <li class="nav-item"><router-link to="/" class="nav-link" >香氛小知識</router-link></li>
+          <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
+          <li class="nav-item"><router-link to="/" class="nav-link" >購物車</router-link></li>
+        </ul>
+      </nav>
+      <div class="hamburger-icon" :class="{'hamburger-icon-active' : mobileNav}" @click="toggleNav" v-show="mobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <transition name="mobile-nav">
+        <nav class="mobile-menu" v-show="mobileNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
+            <li class="nav-item"><router-link to="/" class="nav-link" >品牌</router-link></li>
+            <li class="nav-item"><router-link to="/" class="nav-link" >香氛小知識</router-link></li>
+            <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
+            <li class="nav-item"><router-link to="/" class="nav-link" >購物車</router-link></li>
+          </ul>
+        </nav>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
 import emitter from '@/methods/getEmitter'
-import Navbar from '@/components/Navbar'
+// import Navbar from '@/components/Navbar'
 
 export default {
   name: 'Navbar-view',
@@ -91,11 +120,16 @@ export default {
       sideCart: '',
       status: {
         loadingItem: ''
-      }
+      },
+      navbarOpen: false,
+      scrollNav: '',
+      mobileNav: '',
+      mobile: '',
+      screenWidth: ''
     }
   },
   components: {
-    Navbar
+    // Navbar
   },
   methods: {
     getCartList () {
@@ -121,6 +155,30 @@ export default {
     sideCartToggle () {
       this.sideCart = !this.sideCart
       // console.log(this.sideCart)
+    },
+    toggleNav () {
+      this.mobileNav = !this.mobileNav
+      // console.log('navbarOpen', this.navbarOpen)
+    },
+    screenSize () {
+      this.screenWidth = window.innerWidth
+      // console.log('screenWidth', this.screenWidth)
+      if (this.screenWidth <= 768) {
+        this.mobile = true
+        // console.log('mobile', this.mobile)
+        return
+      }
+      this.mobile = false
+      this.mobileNav = false
+    },
+    updateScroll () {
+      const scrollPosition = window.scrollY
+      console.log(scrollPosition)
+      if (scrollPosition > 50) {
+        this.scrollNav = true
+        return
+      }
+      this.scrollNav = false
     }
     // logout () {
     //   const logoutApi = `${process.env.VUE_APP_API}logout`
@@ -136,15 +194,22 @@ export default {
   },
   created () {
     this.getCartList()
+    this.screenSize()
     emitter.on('updateCart', (data) => {
       this.cart = data
     })
+    window.addEventListener('resize', this.screenSize)
+  },
+  mounted () {
+    window.addEventListener('scroll', this.updateScroll)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
+@import "src/assets/css/nabar";
+@import "src/assets/css/miniCart";
 
 * {
   padding: 0;
@@ -154,22 +219,26 @@ export default {
 
 .header{
   width: 100%;
+  height: auto;
   margin-bottom: 0;
   z-index: 900;
-  //background: $customLightGray;
+  background: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   position: fixed;
   @media screen and (max-width: 768px) {
-    height: 100px;
-    margin: 5px 0;
+    height: 70px;
   }
   &__hide-box {
     width: 30%;
     height: 110px;
     margin: 0 auto;
+  }
+  .header-container {
+    display: flex;
+    justify-content: center;
     @media screen and (max-width: 768px) {
+      height: 70px;
     }
   }
   &__logo {
@@ -180,19 +249,28 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-      width: 274px;
-      height: 110px;
-      aspect-ratio: auto 274 / 110;
-      object-fit: contain;
-      max-height: inherit;
-      transition: height .3s ease-in-out;
-      //display: block;
-      //margin: 0 auto;
-      @media screen and (max-width: 768px) {
-        width: 90%;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 274px;
+        height: 110px;
+        aspect-ratio: auto 274 / 110;
+        object-fit: contain;
+        max-height: inherit;
+        transition: height .3s ease-in-out;
+        //display: block;
+        //margin: 0 auto;
+        @media screen and (max-width: 768px) {
+          width: 70%;
+          margin: 0 auto;
+        }
       }
     }
+  }
+  .scroll-nav {
+    height: 70px;
   }
   &__mini-bar {
     width: 30%;
@@ -204,6 +282,7 @@ export default {
     .cartIcon, .mini-user {
       @media screen and (max-width: 768px) {
         width: 20%;
+        height: 100px;
         margin: 0 5px;
       }
       &__img {
@@ -216,19 +295,22 @@ export default {
         margin: 0 10px;
         font-size: 2.2em;
         //color: white;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
     .mini-cart {
       position: relative;
       .icon-num,.icon-null {
         position: absolute;
-        right: 10px;
+        right: 25px;
         top: 8px;
         width: 21px;
         height: 21px;
         z-index: 2;
         border: none;
-        background-color: $customCartNumColor;
+        background-color: #CB4042;
         padding: 6px;
         color: white;
         border-radius: 50%;
@@ -246,178 +328,6 @@ export default {
       }
     }
   }
-}
-
-.cart-wrap {
-  width: 350px;
-  height: 100%;
-  background-color: $customLightGray;
-  position: fixed;
-  top: 155px;
-  right: 0;
-  z-index: 99999;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    overflow-y: auto;
-  }
-
-  .cart-container {
-    width: 310px;
-    margin: 60px 20px;
-    @media screen and (max-width: 768px) {
-      margin: 60px auto;
-    }
-  }
-
-  h2 {
-    font-size: 1.8em;
-    position: relative;
-    margin-bottom: 50px;
-
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -25px;
-      left: 0;
-      width: 310px;
-      border-bottom: 3px solid #000;
-    }
-  }
-
-  h3 {
-    font-size: .9em;
-    margin-top: 10px;
-  }
-
-  .cart-header a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    right: 340px;
-    width: 60px;
-    height: 80px;
-    font-size: 2em;
-    background: $customLightGray;
-    color: white;
-    border-radius: 10px;
-    @media screen and (max-width: 768px) {
-      top: 0;
-      right: 0;
-      background-color: transparent;
-    }
-
-    svg {
-      transition: .3s ease-in-out;
-    }
-
-    &:hover svg {
-      transform: scale(1.2);
-    }
-  }
-
-  .cart-item {
-    display: flex;
-    background-color: rgba($color: white, $alpha: .3);
-    margin-bottom: 10px;
-    transition: .3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.02);
-    }
-
-    .cart-photo {
-      width: 32%;
-      img {
-        width: 100%;
-      }
-    }
-
-    .cart-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 60%;
-      .num {
-        display: flex;
-        margin: 10px 0;
-        align-items: center;
-      }
-    }
-
-    .cart-del {
-      background-color: transparent;
-      border: none;
-      color: #CB4042;
-      transition: .3s ease-in-out;
-
-      &:disabled {
-        opacity: .5;
-      }
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-
-  h4 {
-    font-size: .7em;
-    padding-right: 10px;
-  }
-
-  h5 {
-    font-size: 1em;
-  }
-
-  .cart-footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    position: relative;
-    margin: 50px 0;
-
-    &:before {
-      content: '';
-      position: absolute;
-      top: -25px;
-      left: 0;
-      width: 310px;
-      border-bottom: 3px solid #000000;
-    }
-  }
-
-  .cart-checkout {
-    border: 1px solid #000000;
-    border-radius: 10px;
-    font-size: 1em;
-    transition: .3s ease-in-out;
-    text-align: center;
-    padding: 10px 0;
-
-    a {
-      text-decoration: none;
-      color: #000000;
-    }
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-}
-
-.sideCart-enter-active,.sideCart-leave-active {
-  transition: .5s ease-in-out;
-}
-
-.sideCart-enter-from, .sideCart-leave-to {
-  transform: translateX(500px);
-}
-
-.sideCart-enter-to {
-  transform: translateX(0);
 }
 
 </style>
