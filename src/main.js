@@ -17,6 +17,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // bootstrap-icons
 import 'bootstrap-icons/font/bootstrap-icons.css'
+// bootstrap、jQuery
+import $ from 'jquery'
+import 'bootstrap'
 // vee-validate
 import { Field, Form, ErrorMessage, defineRule, configure } from 'vee-validate'
 import AllRules from '@vee-validate/rules'
@@ -51,6 +54,7 @@ app.component('Form', Form)
 // eslint-disable-next-line vue/multi-word-component-names
 app.component('Field', Field)
 app.component('ErrorMessage', ErrorMessage)
+app.config.globalProperties.$ = $
 app.use(VueAxios, axios)
 app.use(router)
 app.mount('#app')

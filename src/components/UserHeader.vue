@@ -3,7 +3,6 @@
   <div class="header">
     <div class="header-container" :class="{'scroll-nav' : scrollNav}">
     <div class="header__hide-box">
-<!--      <Navbar @click="toggleNav"/>-->
     </div>
     <div class="header__logo">
       <router-link to="/" >
@@ -16,7 +15,7 @@
         <font-awesome-icon :icon="['fas', 'user']"/>
         </button>
       </div>
-      <div class="mini-cart">
+      <div class="mini-cart" >
         <div class="container">
           <div class="cartIcon">
         <button class="btn cartIcon__img" @click="sideCartToggle">
@@ -30,8 +29,8 @@
         </div>
           </div>
         <transition name="sideCart" v-show="sideCart">
-          <div class="cart-wrap" >
-            <div class="cart-container">
+          <div class="cart-wrap">
+            <div class="cart-container" >
               <div class="cart-header">
                 <h2>
                   <font-awesome-icon :icon="['fas', 'cart-shopping']"/>
@@ -76,31 +75,22 @@
     </div>
     </div>
     <div class="nav-container" >
-      <nav class="scroll-menu" v-show="!mobile">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
-          <li class="nav-item"><router-link to="/" class="nav-link" >品牌</router-link></li>
-          <li class="nav-item"><router-link to="/" class="nav-link" >香氛小知識</router-link></li>
-          <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
-          <li class="nav-item"><router-link to="/" class="nav-link" >購物車</router-link></li>
-        </ul>
+      <nav class="navbar navbar-expand-lg navbar-light scroll-menu" >
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
+              <li class="nav-item"><router-link to="/products/productsIndex" class="nav-link" >全部商品</router-link></li>
+              <li class="nav-item"><router-link to="/" class="nav-link" >香氛小知識</router-link></li>
+              <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
+              <li class="nav-item"><router-link to="/cart/cartPage" class="nav-link" >購物車</router-link></li>
+            </ul>
+          </div>
+        </div>
       </nav>
-      <div class="hamburger-icon" :class="{'hamburger-icon-active' : mobileNav}" @click="toggleNav" v-show="mobile">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <transition name="mobile-nav">
-        <nav class="mobile-menu" v-show="mobileNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
-            <li class="nav-item"><router-link to="/" class="nav-link" >品牌</router-link></li>
-            <li class="nav-item"><router-link to="/" class="nav-link" >香氛小知識</router-link></li>
-            <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
-            <li class="nav-item"><router-link to="/" class="nav-link" >購物車</router-link></li>
-          </ul>
-        </nav>
-      </transition>
     </div>
   </div>
 </template>
@@ -121,15 +111,9 @@ export default {
       status: {
         loadingItem: ''
       },
-      navbarOpen: false,
-      scrollNav: '',
-      mobileNav: '',
-      mobile: '',
-      screenWidth: ''
+      scrollNav: false, // 控制頁面高度
+      screenWidth: '' // 頁面寬度
     }
-  },
-  components: {
-    // Navbar
   },
   methods: {
     getCartList () {
@@ -156,24 +140,12 @@ export default {
       this.sideCart = !this.sideCart
       // console.log(this.sideCart)
     },
-    toggleNav () {
-      this.mobileNav = !this.mobileNav
-      // console.log('navbarOpen', this.navbarOpen)
-    },
     screenSize () {
       this.screenWidth = window.innerWidth
-      // console.log('screenWidth', this.screenWidth)
-      if (this.screenWidth <= 768) {
-        this.mobile = true
-        // console.log('mobile', this.mobile)
-        return
-      }
-      this.mobile = false
-      this.mobileNav = false
     },
     updateScroll () {
       const scrollPosition = window.scrollY
-      console.log(scrollPosition)
+      // console.log(scrollPosition)
       if (scrollPosition > 50) {
         this.scrollNav = true
         return
@@ -208,7 +180,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/assets/helpers/customVariables";
-@import "src/assets/css/nabar";
+@import "src/assets/css/navbar";
 @import "src/assets/css/miniCart";
 
 * {

@@ -1,5 +1,4 @@
 <template>
-  <UserHeader></UserHeader>
 <!--  <div class="container-fluid mt-3 position-relative"></div>-->
     <ToastMessages></ToastMessages>
     <router-view/>
@@ -7,7 +6,6 @@
 </template>
 
 <script>
-import UserHeader from '@/components/UserHeader'
 import emitter from '@/methods/getEmitter'
 import ToastMessages from '@/components/toastMessageController/ToastMessages.vue'
 
@@ -20,7 +18,6 @@ export default {
     }
   },
   components: {
-    UserHeader,
     ToastMessages
   },
   provide () {
