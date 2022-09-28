@@ -8,7 +8,7 @@
   width: 100%;
   padding-top: 140px;
   @media screen and (max-width: 768px) {
-    padding-top: 140px;
+    padding-top: 70px;
   }
 }
 //輪播
@@ -21,28 +21,12 @@
   .carousel-inner {
     height: 1000px;
   }
-  .image-box1, .image-box2, .image-box3 {
-    padding: 40px;
-    min-height: 70vh;
-  }
-  .image-box1 {
-    //background: blue;
-    //background-image: url();
-  }
-  .image-box2 {
-    //background: red;
-    //background-image: url("../../assets/image/rebecca-peterson-hall-aN-zGYlxiCI-unsplash.jpg");
-  }
-  .image-box3 {
-    //background: orange;
-    //background-image: url("../../assets/image/pille-r-priske-hr0nUFtpCTk-unsplash.jpg");
-  }
 }
 //內文
 .info1, .info2, .info3, .info4{
   max-width: 1200px;
   //background: gray;
-  margin: 120px auto 0 auto;
+  margin: 80px auto 20px auto;
   display: flex;
   flex-direction: column;
   @media screen and (max-width: 768px) {

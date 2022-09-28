@@ -3,11 +3,11 @@
     <div class="main">
 <!--      輪播-->
       <div id="carouselExampleCaptions" class="carousel slide banner" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"/>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"/>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"/>
-        </div>
+<!--        <div class="carousel-indicators">-->
+<!--          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"/>-->
+<!--          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"/>-->
+<!--          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"/>-->
+<!--        </div>-->
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="@/assets/image/kat-von-wood-HhVgCRGX6bk-unsplash.jpg" alt="" class="d-block w-100">
