@@ -11,9 +11,9 @@
     </div>
     <div class="header__mini-bar">
       <div class="mini-user">
-        <button class="btn mini-user__img" >
+        <router-link to="/login" class="btn mini-user__img" >
         <font-awesome-icon :icon="['fas', 'user']"/>
-        </button>
+        </router-link>
       </div>
       <div class="mini-cart" >
         <div class="container">
@@ -97,7 +97,6 @@
 
 <script>
 import emitter from '@/methods/getEmitter'
-// import Navbar from '@/components/Navbar'
 
 export default {
   name: 'Navbar-view',
@@ -227,7 +226,6 @@ export default {
       align-items: center;
       img {
         width: 274px;
-        height: 90px;
         aspect-ratio: auto 274 / 90;
         object-fit: contain;
         max-height: inherit;
