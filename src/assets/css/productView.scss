@@ -1,6 +1,5 @@
 @import "src/assets/helpers/customVariables";
 .wrap {
-  height: auto;
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;

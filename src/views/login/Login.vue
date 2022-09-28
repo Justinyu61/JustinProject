@@ -30,8 +30,8 @@
           </div>
 
           <div class="linkBtn">
-            <router-link class="btn btn-danger " to="/">返回首頁</router-link>
-            <button class="btn  btn-primary" type="submit">登入</button>
+            <router-link class="btn btn-outline-secondary " to="/">返回首頁</router-link>
+            <button class="btn btn-primary" type="submit">登入</button>
           </div>
         </div>
       </form>
@@ -133,7 +133,7 @@ export default {
   }
   .linkBtn {
     margin-top: 30px;
-    margin-left: 65%;
+    margin-left: 60%;
     @media screen and (max-width: 768px) {
       margin-left: 18%;
     }

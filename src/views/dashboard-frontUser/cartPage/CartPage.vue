@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="linkBtn">
-      <router-link class="btn btn-dark linkBtn__returnProduct" to="/products/productsIndex">繼續購物</router-link>
+      <router-link class="btn btn-outline-secondary linkBtn__returnProduct" to="/products/productsIndex">繼續購物</router-link>
       <router-link class="btn btn-danger linkBtn__goCheck" to="/cart/userCheck">送出訂單</router-link>
     </div>
   </div>

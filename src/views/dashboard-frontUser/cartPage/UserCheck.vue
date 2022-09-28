@@ -49,7 +49,7 @@
         <textarea name="" id="message" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
       </div>
       <div class="linkBtn">
-        <router-link class="btn btn-dark linkBtn__returnProduct" to="/cart/cartPage">返回購物車</router-link>
+        <router-link class="btn btn-outline-secondary linkBtn__returnProduct" to="/cart/cartPage">返回購物車</router-link>
         <button class="btn btn-danger linkBtn__goCheck">送出訂單</button>
       </div>
     </Form>
