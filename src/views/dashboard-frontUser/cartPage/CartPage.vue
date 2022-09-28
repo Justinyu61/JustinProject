@@ -24,9 +24,9 @@
     </div>
     <div class="cartBody">
       <div class="product-table" v-for="item in cart.carts" :key="item.id">
-        <button type="button" class="btn btn-outline-danger btn-sm cancel-btn" @click="removeCartItem(item.id)">
-          <i class="bi bi-x"></i>
-        </button>
+<!--        <button type="button" class="btn btn-outline-danger btn-sm cancel-btn" @click="removeCartItem(item.id)">-->
+<!--          <i class="bi bi-x"></i>-->
+<!--        </button>-->
         <div class="product-img">
           <img :src="item.product.imageUrl" alt="">
         </div>
@@ -42,11 +42,17 @@
             <font-awesome-icon :icon="['fas', 'plus']"/>
           </button>
         </div>
+        <div class="mobile-style">
         <div class="product-price">
           <h4>${{ item.product.price }}元 / 件</h4>
           <small v-if="item.coupon" class="text-success">折扣價：</small>
             小計: ${{ $filters.currency(item.final_total)}}元
         </div>
+        <button type="button" class="cart-del"  :disabled="this.status.loadingItem === item.id" @click="removeCartItem(item.id)">
+          <font-awesome-icon :icon="['fas', 'spinner']" v-if="this.status.loadingItem === item.id"/>
+          <font-awesome-icon :icon="['fas', 'trash-can']" v-else/>
+        </button>
+      </div>
       </div>
       <div class="input-group mb-3 input-group-sm">
         <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">

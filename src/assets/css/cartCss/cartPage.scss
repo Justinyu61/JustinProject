@@ -15,9 +15,6 @@
     width: 100%;
   }
   .cancel-btn {
-    position: absolute;
-    left: 30px;
-    bottom: 110px;
   }
   .product-img {
     width: 15%;
@@ -66,5 +63,32 @@
   @media screen and (max-width: 768px) {
     right: 0;
     width: 40%;
+  }
+}
+.cart-del {
+  background-color: transparent;
+  border: none;
+  color: #CB4042;
+  transition: .3s ease-in-out;
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.mobile-style {
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+  .cart-del {
+    @media screen and (max-width: 768px) {
+      margin-left: 10px;
+    }
   }
 }
