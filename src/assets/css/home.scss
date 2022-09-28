@@ -18,19 +18,24 @@
   @media screen and (max-width: 768px) {
     display: none;
   }
+  .carousel-inner {
+    height: 1000px;
+  }
   .image-box1, .image-box2, .image-box3 {
     padding: 40px;
     min-height: 70vh;
   }
   .image-box1 {
-    background: blue;
-    //background-image: url("https://1010apothecary.com.tw/brands/diptyque/diptyque-new");
+    //background: blue;
+    //background-image: url();
   }
   .image-box2 {
-    background: red;
+    //background: red;
+    //background-image: url("../../assets/image/rebecca-peterson-hall-aN-zGYlxiCI-unsplash.jpg");
   }
   .image-box3 {
-    background: orange;
+    //background: orange;
+    //background-image: url("../../assets/image/pille-r-priske-hr0nUFtpCTk-unsplash.jpg");
   }
 }
 //內文

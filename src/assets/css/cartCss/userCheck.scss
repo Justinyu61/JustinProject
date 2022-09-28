@@ -1,0 +1,14 @@
+@import "src/assets/helpers/customVariables";
+.stepper {
+  li {
+    &:nth-child(4) {
+      background-color: #000;
+    }
+  }
+}
+.form-control {
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0 0 0 60px;
+  }
+}

@@ -1,14 +1,29 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="wrap">
-    <div class="stepper">
+    <div class="container ">
+      <h2>訂單資訊</h2>
+      <div class="stepper">
       <ul>
-        <li>Step 1 <br>確認購物車</li>
-        <li>Step 2 <br>填寫資料</li>
+        <li >Step 1 <br>確認購物車</li>
+        <div class="arrowIconRight">
+          <font-awesome-icon  :icon="['fas', 'arrow-right']"/>
+        </div>
+        <div class="arrowIconDown">
+          <font-awesome-icon  :icon="['fas', 'arrow-down']"/>
+        </div>
+        <li >Step 2 <br>填寫資料</li>
+        <div class="arrowIconRight">
+          <font-awesome-icon  :icon="['fas', 'arrow-right']"/>
+        </div>
+        <div class="arrowIconDown">
+          <font-awesome-icon  :icon="['fas', 'arrow-down']"/>
+        </div>
         <li>Step 3 <br>完成訂單</li>
       </ul>
-      <div class="my-5 row justify-content-center">
-        <form class="col-md-6" @submit.prevent="payOrder">
+    </div>
+      <div class="row justify-content-center form-place">
+        <form class="col-md-6 " @submit.prevent="payOrder">
           <table class="table align-middle">
             <thead>
               <th>品名</th>
@@ -112,35 +127,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/helpers/customVariables";
-.stepper {
-  ul {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      bottom: -30px;
-      left: 0;
-      width: 100%;
-      border-top: 3px solid #ffffff;
-    }
-  }
-
-  li {
-    background: $customLightGray;
-    border-radius: 15px;
-    padding: 20px 80px;
-    font-size: 1em;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-
-    &:nth-child(3) {
-      background-color: $customGray-Blue;
-    }
-  }
-}
+@import "src/assets/css/cartCss/finalOrder";
+@import "src/assets/css/cartCss/stepper";
+@import "src/assets/css/cartCss/sameCssForCart";
 </style>

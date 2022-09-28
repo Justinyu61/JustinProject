@@ -22,6 +22,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  @media screen and (max-width: 768px) {
+    padding: 3px;
+    height: 80px;
+  }
   &__content{
     &--text {
       p {

@@ -6,7 +6,7 @@
     </div>
     <div class="header__logo">
       <router-link to="/" >
-        <img src="../assets/image/1010_APOTHECARY_LOGO-OK-01.png" alt>
+        <img src="../assets/image/Logo.jpg" alt>
       </router-link>
     </div>
     <div class="header__mini-bar">
@@ -80,7 +80,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
               <li class="nav-item"><router-link to="/products/productsIndex" class="nav-link" >全部商品</router-link></li>
@@ -227,8 +227,8 @@ export default {
       align-items: center;
       img {
         width: 274px;
-        height: 110px;
-        aspect-ratio: auto 274 / 110;
+        height: 90px;
+        aspect-ratio: auto 274 / 90;
         object-fit: contain;
         max-height: inherit;
         transition: height .3s ease-in-out;

@@ -160,5 +160,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/css/cartPage";
+@import "src/assets/css/cartCss/cartPage";
+@import "src/assets/css/cartCss/stepper";
+@import "src/assets/css/cartCss/sameCssForCart";
+
 </style>

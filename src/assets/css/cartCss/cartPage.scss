@@ -1,0 +1,70 @@
+@import "src/assets/helpers/customVariables";
+.stepper {
+  li {
+    &:first-child {
+      background-color: #000;
+    }
+  }
+}
+.product-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cancel-btn {
+    position: absolute;
+    left: 30px;
+    bottom: 110px;
+  }
+  .product-img {
+    width: 15%;
+    @media screen and (max-width: 768px) {
+      width: 70%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .product-title {
+    width: 15%;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+    }
+    h3 {
+      font-size: 1.2em;
+    }
+  }
+  .product-qty {
+    width: 23%;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
+.input-group {
+  margin: 20px auto;
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+}
+.total-price {
+  position: absolute;
+  right: 200px;
+  width: 15%;
+  margin: 20px 0;
+  @media screen and (max-width: 768px) {
+    right: 0;
+    width: 40%;
+  }
+}
