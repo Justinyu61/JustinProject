@@ -93,7 +93,7 @@ export default {
       const deleteItemApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.$http.delete(deleteItemApi)
         .then((res) => {
-          // console.log('deleteItem', res)
+          console.log('deleteItem', res)
           this.$httpMsgState(res, '產品移除')
           this.status.loadingItem = ''
           this.getCart()
@@ -104,9 +104,9 @@ export default {
     }
   },
   created () {
-    this.getCart()
     emitter.on('updateCart', (data) => {
       this.cart = data
+      this.getCart()
     })
   }
 }
@@ -119,7 +119,7 @@ export default {
     margin: auto;
     max-width: 1200px;
     width: 100%;
-    height: 100%;
+    //height: 100%;
   }
 }
 img {

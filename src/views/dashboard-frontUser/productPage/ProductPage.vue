@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import emitter from '@/methods/getEmitter'
+
 export default {
   name: 'ProductItem',
   data () {
@@ -50,7 +52,8 @@ export default {
       products: [],
       status: { // 對應的品項id
         loadingItem: ''
-      }
+      },
+      cart: {}
     }
   },
   inject: ['emitter'],
@@ -65,12 +68,23 @@ export default {
           this.isLoading = false
         })
     },
+    getCart () {
+      const getCartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.isLoading = true
+      this.$http.get(getCartApi)
+        .then((res) => {
+          // console.log('getCart:', res.data.data.carts)
+          this.cart = res.data.data
+          this.isLoading = false
+        })
+    },
     viewMore (id) {
       this.$router.push(`/products/product/${id}`)
       // console.log('index:', id)
     },
     addToCart (id) {
       // console.log(id)
+      this.isLoading = true
       const CartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.status.loadingItem = id
       const cart = {
@@ -81,20 +95,15 @@ export default {
         .then((res) => {
           // console.log('addToCart', res)
           this.$httpMsgState(res, '加入購物車')
+          this.isLoading = false
           this.status.loadingItem = ''
+          emitter.emit('updateCart', this.cart)
         })
     }
-    // getCart () {
-    //   const getCartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-    //   this.$http.get(getCartApi)
-    //     .then((res) => {
-    //       console.log('getCart', res.data)
-    //     })
-    // }
   },
   created () {
     this.getProducts()
-    // this.getCart()
+    this.getCart()
   }
 }
 </script>

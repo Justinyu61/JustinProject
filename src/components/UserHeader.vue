@@ -132,7 +132,7 @@ export default {
           // console.log('deleteItem', res)
           this.$httpMsgState(res, '產品移除')
           this.status.loadingItem = ''
-          this.getCart()
+          this.getCartList()
         })
     },
     sideCartToggle () {
@@ -164,10 +164,10 @@ export default {
     // }
   },
   created () {
-    this.getCartList()
     this.screenSize()
     emitter.on('updateCart', (data) => {
       this.cart = data
+      this.getCartList()
     })
     window.addEventListener('resize', this.screenSize)
   },

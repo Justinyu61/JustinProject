@@ -39,7 +39,11 @@ export default {
     return {
       product: {},
       id: '',
-      isLoading: false
+      isLoading: false,
+      status: { // 對應的品項id
+        loadingItem: ''
+      },
+      cart: {}
     }
   },
   provide () {
@@ -76,13 +80,25 @@ export default {
           // console.log('itemToCart', res)
           this.$httpMsgState(res, '加入購物車')
           this.isLoading = false
-          // this.$router.push('/cart/cartPage')
+          this.status.loadingItem = ''
+          emitter.emit('updateCart', this.cart)
+        })
+    },
+    getCart () {
+      const getCartApi = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.isLoading = true
+      this.$http.get(getCartApi)
+        .then((res) => {
+          // console.log('getCart:', res.data.data.carts)
+          this.cart = res.data.data
+          this.isLoading = false
         })
     }
   },
   created () {
     this.id = this.$route.params.productId
     this.getProduct()
+    this.getCart()
   }
 }
 </script>
