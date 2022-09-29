@@ -6,6 +6,10 @@
     }
   }
 }
+.cartBody {
+  display: flex;
+  flex-direction: column;
+}
 .product-table {
   display: flex;
   justify-content: center;
@@ -56,13 +60,11 @@
   }
 }
 .total-price {
-  position: absolute;
-  right: 200px;
   width: 15%;
-  margin: 20px 0;
+  margin: 20px 0 20px calc( 1200px - 35% );
   @media screen and (max-width: 768px) {
-    right: 0;
     width: 40%;
+    margin-left: calc( 100% - 40% );
   }
 }
 .cart-del {

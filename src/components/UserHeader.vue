@@ -62,7 +62,7 @@
                 <h5>$ {{ $filters.currency(cart.total) }}</h5>
               </div>
               <div class="cart-checkout" v-if="cartLen !== 0">
-                <router-link to="/cart/cartPage">
+                <router-link to="/cart/cartPage" >
                   <font-awesome-icon :icon="['fas', 'cart-shopping']" />
                   結帳
                 </router-link>
@@ -276,8 +276,8 @@ export default {
         position: absolute;
         right: 25px;
         top: 8px;
-        width: 21px;
-        height: 21px;
+        width: 25px;
+        height: 25px;
         z-index: 2;
         border: none;
         background-color: #CB4042;
@@ -286,14 +286,14 @@ export default {
         border-radius: 50%;
         text-align: center;
         opacity: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         @media screen and (max-width: 768px) {
           right: 30px;
         }
         p {
           font-size: 1em;
-          position: absolute;
-          top: -1px;
-          left: 6px ;
         }
       }
     }
