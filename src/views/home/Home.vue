@@ -124,7 +124,7 @@
                 <img class="imagePlace" src="../../assets/image/by2.png" alt="">
                 <h2 class="titlePlace">BYREDO</h2>
                 <div class="linkPlace">
-                <router-link class="view-more btn btn-outline-secondary" :to="{path: '/brands',query: {productCategory: 'MALIN+GOETZ'}}">
+                <router-link class="view-more btn btn-outline-secondary" :to="{path: '/brands',query: {productCategory: 'BYREDO'}}">
                   了解更多
                 </router-link>
                 </div>
@@ -133,7 +133,7 @@
                 <img class="imagePlace" src="../../assets/image/k2.png" alt="">
                 <h2 class="titlePlace">KERZON</h2>
                 <div class="linkPlace">
-                  <router-link class="view-more btn btn-outline-secondary" :to="{path: '/brands',query: {productCategory: 'MALIN+GOETZ'}}">
+                  <router-link class="view-more btn btn-outline-secondary" :to="{path: '/brands',query: {productCategory: 'KERZON'}}">
                     了解更多
                   </router-link>
                 </div>
@@ -142,7 +142,7 @@
                 <img class="imagePlace" src="../../assets/image/f2.png" alt="">
                 <h2 class="titlePlace">FLORAÏKU</h2>
                 <div class="linkPlace">
-                  <router-link class="view-more btn btn-outline-secondary" :to="{path: '/brands',query: {productCategory: 'MALIN+GOETZ'}}">
+                  <router-link class="view-more btn btn-outline-secondary" :to="{path: '/brands',query: {productCategory: 'FLORAÏKU'}}">
                     了解更多
                   </router-link>
                 </div>
@@ -176,6 +176,9 @@ export default {
           this.brandDiptyque = res.data.products.filter((products) => products.category === 'diptyque')
           this.brandDiptyque = res.data.products.filter((products) => products.category === 'bamford')
           this.brandDiptyque = res.data.products.filter((products) => products.category === 'MALIN+GOETZ')
+          this.brandDiptyque = res.data.products.filter((products) => products.category === 'BYREDO')
+          this.brandDiptyque = res.data.products.filter((products) => products.category === 'KERZON')
+          this.brandDiptyque = res.data.products.filter((products) => products.category === 'FLORAÏKU')
           this.isLoading = false
         })
     }

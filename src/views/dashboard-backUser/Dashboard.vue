@@ -1,6 +1,6 @@
 <template>
     <Navbar></Navbar>
-  <div class="container-fluid mt-3 position-relative">
+  <div class="container-fluid  position-relative">
     <ToastMessages></ToastMessages>
     <router-view/>
   </div>
@@ -37,6 +37,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.container-fluid {
+  margin-top: 140px;
+}
 </style>

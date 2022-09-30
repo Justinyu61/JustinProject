@@ -84,7 +84,7 @@
             <ul class="navbar-nav">
               <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
               <li class="nav-item"><router-link to="/products/productsIndex" class="nav-link" >全部商品</router-link></li>
-              <li class="nav-item"><router-link to="/" class="nav-link" >香氛小知識</router-link></li>
+              <li class="nav-item"><router-link to="/trivia" class="nav-link" >香氛小知識</router-link></li>
               <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
               <li class="nav-item"><router-link to="/cart/cartPage" class="nav-link" >購物車</router-link></li>
             </ul>

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer__body">
       <div class="footer__body--text">
-        <p>圖片僅供個人學習使用，無商業用途</p>
+        <p>資料、圖片來源皆來自網路，僅作為學習用途。</p>
       </div>
     </div>
   </div>

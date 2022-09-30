@@ -1,6 +1,6 @@
 <template>
-
   <Loading :active="isLoading"></Loading>
+  <div class="wrap">
   <div class="text-end">
     <button class="btn btn-primary" type="button" @click="openProductModal(true)">
       新增產品
@@ -49,6 +49,7 @@
   <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
   <ProductModal ref="productModal" :product="tempProduct" @update-product="updateProduct"></ProductModal>
   <DeleteModal ref="deleteModal" :item="tempProduct" @delete-item="deleteProduct"></DeleteModal>
+  </div>
 </template>
 
 <script>

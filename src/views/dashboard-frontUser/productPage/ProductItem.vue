@@ -6,23 +6,48 @@
     <div class="product-img">
         <img :src="product.imageUrl" alt="">
     </div>
-    <div class="product-info">
-      <h2>{{ product.category }}</h2>
-      <p>{{ product.title }}</p>
-      <br>
-      <h3>{{ product.description }}</h3>
-      <span>{{ product.content }}</span>
-      <br>
-      <h4>售價 : {{ product.origin_price }} 元</h4>
-      <div class="product-info__btn-place" v-if="product.price">
-                <button type="button" class="btn btn-outline-secondary"
-                        @click="returnProducts">
-                  返回商品頁
-                </button>
-                <button type="button" class="btn btn-outline-danger "
-                        @click="addToCart(product.id)">
-                  加到購物車
-                </button>
+    <div class="product__info">
+<!--      <h2>{{ product.category }}</h2>品牌1-->
+<!--      <p>{{ product.title }}</p>品名2-->
+<!--      <br>-->
+<!--      <h3>{{ product.description }}</h3>介紹3-->
+<!--      <span>{{ product.content }}</span>內容物4-->
+<!--      <br>-->
+<!--      <h4>售價 : {{ product.origin_price }} 元</h4> 售價5-->
+<!--      <div class="product-info__btn-place" v-if="product.price">-->
+<!--                <button type="button" class="btn btn-outline-secondary"-->
+<!--                        @click="returnProducts">-->
+<!--                  返回商品頁-->
+<!--                </button>-->
+<!--                <button type="button" class="btn btn-outline-danger "-->
+<!--                        @click="addToCart(product.id)">-->
+<!--                  加到購物車-->
+<!--                </button>-->
+<!--      </div>-->
+      <div class="product__info--category">
+        <h2>{{ product.category }}</h2>
+      </div>
+      <div class="product__info--title">
+        <p>{{ product.title }}</p>
+      </div>
+      <div class="product__info--originPrice">
+        <h4>NT$ {{ product.origin_price }} 元</h4>
+      </div>
+      <div class="product__info--btnPlace" v-if="product.price">
+        <button type="button" class="btn btn-outline-secondary" @click="returnProducts">
+          返回商品頁
+        </button>
+        <button type="button" class="btn btn-outline-danger " @click="addToCart(product.id)">
+          加到購物車
+        </button>
+      </div>
+      <div class="product__info--description">
+        <h2>商品介紹:</h2>
+        <h3>{{ product.description }}</h3>
+      </div>
+      <div class="product__info--content">
+        <h2>主要成分:</h2>
+        <h3>{{ product.content }}</h3>
       </div>
     </div>
     </div>

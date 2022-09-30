@@ -78,13 +78,13 @@
     &--img-place, &--for-mobile{
       width: 500px;
       @media screen and (max-width: 768px) {
-        width: 80%;
+        width: 100%;
       }
       img {
         height: 600px;
-        width: 100%;
+        width: 80%;
         @media screen and (max-width: 768px) {
-          height: 400px;
+          width: 100%;
         }
       }
     }
