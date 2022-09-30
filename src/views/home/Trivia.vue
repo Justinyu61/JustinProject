@@ -1,6 +1,9 @@
 <template>
   <div class="wrap">
     <div class="main">
+<!--      <div class="title">-->
+<!--        <h2>香氛小知識</h2>-->
+<!--      </div>-->
       <div class="content">
         <div class="content__box1">
           <div class="content__title">
@@ -69,59 +72,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main {
-  min-height: calc(100vh - 100px);
-  max-width: 1200px;
-  padding-top: 200px;
-  margin: 0 auto;
-  @media screen and (max-width: 768px) {
-    padding-top: 70px;
-  }
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &__box1, &__box2, &__box3, &__box4 {
-    margin: 80px 0;
-  }
-  &__title {
-    h2 {
-      font-weight: 700;
-      font-size: 2.1em;
-      margin-bottom: 20px;
-      @media screen and (max-width: 768px) {
-        font-size: 1.5em;
-      }
-    }
-  }
-  &__image {
-    width: 80%;
-    margin: 0 auto;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      margin: 20px 0;
-    }
-    img {
-      width: 100%;
-    }
-  }
-  &__info {
-    width: 80%;
-    margin: 0 auto;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      margin: 0;
-    }
-    p {
-      font-weight: 700;
-      font-size: 1.2em;
-      line-height: 50px;
-      @media screen and (max-width: 768px) {
-        line-height: 25px;
-      }
-    }
-  }
-}
+@import "src/assets/css/home/tirvia";
 </style>

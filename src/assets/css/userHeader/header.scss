@@ -1,0 +1,118 @@
+@import "src/assets/helpers/customVariables";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header{
+  width: 100%;
+  height: auto;
+  margin-bottom: 0;
+  z-index: 900;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  @media screen and (max-width: 768px) {
+    height: 70px;
+  }
+  &__hide-box {
+    width: 30%;
+    height: 110px;
+    margin: 0 auto;
+  }
+  .header-container {
+    display: flex;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+      height: 70px;
+    }
+  }
+  &__logo {
+    width: 40%;
+    transition: all .3s;
+    margin: 0 auto;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 274px;
+        aspect-ratio: auto 274 / 90;
+        object-fit: contain;
+        max-height: inherit;
+        transition: height .3s ease-in-out;
+        //display: block;
+        //margin: 0 auto;
+        @media screen and (max-width: 768px) {
+          width: 70%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+  .scroll-nav {
+    height: 70px;
+  }
+  &__mini-bar {
+    width: 30%;
+    height: 110px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .cartIcon, .mini-user {
+      @media screen and (max-width: 768px) {
+        width: 20%;
+        height: 100px;
+        margin: 0 5px;
+      }
+      &__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border: none;
+        margin: 0 10px;
+        font-size: 2.2em;
+        //color: white;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    .mini-cart {
+      position: relative;
+      .icon-num,.icon-null {
+        position: absolute;
+        right: 25px;
+        top: 8px;
+        width: 25px;
+        height: 25px;
+        z-index: 2;
+        border: none;
+        background-color: #CB4042;
+        padding: 6px;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        opacity: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          right: 30px;
+        }
+        p {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}

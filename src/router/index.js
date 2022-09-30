@@ -13,11 +13,11 @@ import CartBoard from '@/views/dashboard-frontUser/cartPage/CartBoard.vue'
 import CartPage from '@/views/dashboard-frontUser/cartPage/CartPage'
 import UserCheck from '@/views/dashboard-frontUser/cartPage/UserCheck'
 import FinalOrder from '@/views/dashboard-frontUser/cartPage/FinalOrder'
-import Brands from '@/views/dashboard-frontUser/brands/Brands'
+import Brands from '@/views/dashboard-frontUser/productPage/Brands'
 
 const routes = [
   {
-    path: '/',
+    path: '/JustCandle',
     name: 'home',
     component: Home
   },
@@ -50,10 +50,6 @@ const routes = [
     ]
   },
   {
-    path: '/brands',
-    component: Brands
-  },
-  {
     path: '/products',
     component: ProductBoard,
     children: [
@@ -64,6 +60,10 @@ const routes = [
       {
         path: 'product/:productId',
         component: ProductItem
+      },
+      {
+        path: '/brands',
+        component: Brands
       }
     ]
   },

@@ -140,9 +140,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/css/productView";
-.banner{
-  background-image: url("../../../assets/image/jessica-delp-smNzhFQRktg-unsplash.jpg");
-  background-position: 50% 80%;
-}
+@import "src/assets/css/pruductCss/sameCssForproduct";
+@import "src/assets/css/pruductCss/brand";
 </style>

@@ -6,9 +6,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
-<!--        <router-link to="/home" class="nav-link">首頁</router-link>-->
-        <router-link to="/dashboard/products" class="nav-link">商品</router-link>
-        <router-link to="/dashboard/orders" class="nav-link">訂單</router-link>
         <router-link to="/dashboard/discount" class="nav-link">優惠券</router-link>
           <a class="nav-link" href="#" @click.prevent="logout">登出</a>
       </div>

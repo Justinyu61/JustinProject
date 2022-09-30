@@ -169,5 +169,4 @@ export default {
 @import "src/assets/css/cartCss/cartPage";
 @import "src/assets/css/cartCss/stepper";
 @import "src/assets/css/cartCss/sameCssForCart";
-
 </style>

@@ -109,9 +109,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/css/productView";
-.banner{
-  background-image: url("../../../assets/image/mediamodifier-V49ntT_Wusw-unsplash.jpg");
-  background-position: 50% 60%;
-}
+@import "src/assets/css/pruductCss/sameCssForproduct";
+@import "src/assets/css/pruductCss/producePage";
 </style>

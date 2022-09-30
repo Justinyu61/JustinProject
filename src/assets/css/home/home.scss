@@ -11,17 +11,7 @@
     padding-top: 70px;
   }
 }
-//輪播
-.banner {
-  width: 100%;
-  display: inline-block;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-  .carousel-inner {
-    height: 1000px;
-  }
-}
+
 //內文
 .info1, .info2, .info3, .info4{
   max-width: 1200px;

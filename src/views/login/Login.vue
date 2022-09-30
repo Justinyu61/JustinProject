@@ -110,36 +110,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrap {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .form-place {
-    width: 600px;
-    padding: 50px;
-    border: 2px solid #000;
-    @media screen and (max-width: 768px) {
-      border: none;
-    }
-    .login-place {
-      width: 100%;
-    }
-  }
-  .linkBtn {
-    margin-top: 30px;
-    margin-left: 60%;
-    @media screen and (max-width: 768px) {
-      margin-left: 18%;
-    }
-    .btn {
-      margin: 0 5px;
-    }
-  }
-}
+@import "src/assets/css/login/login";
 </style>
