@@ -5,7 +5,7 @@
     <div class="header__hide-box">
     </div>
     <div class="header__logo">
-      <router-link to="/JustCandle" >
+      <router-link to="/" >
         <img src="../assets/image/Logo.jpg" alt>
       </router-link>
     </div>
@@ -61,7 +61,7 @@
                 <h4>小計</h4>
                 <h5>$ {{ $filters.currency(cart.total) }}</h5>
               </div>
-              <div class="cart-checkout" v-if="cartLen !== 0">
+              <div class="cart-checkout" v-if="cartLen !== 0" @click="cartCheckout">
                 <router-link to="/cart/cartPage" >
                   <font-awesome-icon :icon="['fas', 'cart-shopping']" />
                   結帳
@@ -77,16 +77,16 @@
     <div class="nav-container" >
       <nav class="navbar navbar-expand-lg navbar-light scroll-menu" >
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-nav" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse " id="navbarNav">
+          <div class="collapse navbar-collapse nav-hide" id="my-nav">
             <ul class="navbar-nav">
-              <li class="nav-item"><router-link to="/" class="nav-link" >最新消息</router-link></li>
-              <li class="nav-item"><router-link to="/products/productsIndex" class="nav-link" >全部商品</router-link></li>
-              <li class="nav-item"><router-link to="/trivia" class="nav-link" >香氛小知識</router-link></li>
-              <li class="nav-item"><router-link to="/" class="nav-link" >關於我們</router-link></li>
-              <li class="nav-item"><router-link to="/cart/cartPage" class="nav-link" >購物車</router-link></li>
+              <li class="nav-item"><router-link to="/" class="nav-link active" @click="hideNenu" >首頁</router-link></li>
+              <li class="nav-item"><router-link to="/products/productsIndex" class="nav-link" @click="hideNenu">全部商品</router-link></li>
+              <li class="nav-item"><router-link to="/trivia" class="nav-link" @click="hideNenu">香氛小知識</router-link></li>
+<!--              <li class="nav-item"><router-link to="/" class="nav-link" @click="hideNenu">關於我們</router-link></li>-->
+              <li class="nav-item"><router-link to="/cart/cartPage" class="nav-link" @click="hideNenu">購物車</router-link></li>
             </ul>
           </div>
         </div>
@@ -97,6 +97,7 @@
 
 <script>
 import emitter from '@/methods/getEmitter'
+import $ from 'jquery'
 
 export default {
   name: 'Navbar-view',
@@ -150,6 +151,12 @@ export default {
         return
       }
       this.scrollNav = false
+    },
+    hideNenu () { // 修改bootsrtap點擊無反應問題
+      $('.nav-hide').collapse('hide')
+    },
+    cartCheckout () {
+      this.sideCart = false
     }
     // logout () {
     //   const logoutApi = `${process.env.VUE_APP_API}logout`

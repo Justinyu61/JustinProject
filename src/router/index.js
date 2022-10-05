@@ -17,7 +17,7 @@ import Brands from '@/views/dashboard-frontUser/productPage/Brands'
 
 const routes = [
   {
-    path: '/JustCandle',
+    path: '/',
     name: 'home',
     component: Home
   },

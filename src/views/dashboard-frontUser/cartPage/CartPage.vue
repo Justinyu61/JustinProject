@@ -100,7 +100,7 @@ export default {
       this.$http.get(getCartApi)
         .then((res) => {
           if (res.data.data.carts.length !== 0) {
-            console.log('getCart:', res.data.data)
+            // console.log('getCart:', res.data.data)
             this.cart = res.data.data
             this.isLoading = false
           } else {
